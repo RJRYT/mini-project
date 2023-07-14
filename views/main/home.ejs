@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+<%- include('./components/head') %>
+   </head>
+
+   <body class="clinic_version">
+      <!-- LOADER -->
+      <% if(!dev){ %>
+      <div id="preloader">
+         <img class="preloader" src="images/loaders/heart-loading2.gif" alt="">
+      </div>
+      <% } %>
+      <!-- END LOADER -->
+      <header>
+         <div class="header-bottom wow fadeIn">
+            <div class="container">
+               <nav class="main-menu">
+                  <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar"><i class="fa fa-bars"
+                           aria-hidden="true"></i></button>
+                  </div>
+
+                  <div id="navbar" class="navbar-collapse collapse">
+                     <ul class="nav navbar-nav">
+                        <li><a class="active" href="/">Home</a></li>
+                        <li><a data-scroll href="/contact">Contact</a></li>
+                        <li><a data-scroll href="/about">About us</a></li>
+                        <%if(status){%>
+                           <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hey <%=user.FirstName%> <span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                                <li><a href="/dashboard">Panel</a></li>
+                                <li><a href="/dashboard/profile">Profile</a></li>
+                                <li><a href="/dashboard/booking">Appoinment</a></li>
+                              </ul>
+                            </li>
+                           <li><a data-scroll href="/auth/logout">Logout</a></li>
+                           <%}else{%>
+                              <li><a data-scroll href="/auth/login?path=signup">Get Started</a></li>
+                              <li><a data-scroll href="/auth/login">Login</a></li>
+                        <%}%>
+                     </ul>
+                  </div>
+               </nav>
+               <div class="serch-bar">
+                  <div id="custom-search-input">
+                     <div class="input-group col-md-12">
+                        <input type="text" class="form-control input-lg" placeholder="Search" />
+                        <span class="input-group-btn">
+                           <button class="btn btn-info btn-lg" type="button">
+                              <i class="fa fa-search" aria-hidden="true"></i>
+                           </button>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </header>
+      <div id="home" class="parallax first-section wow fadeIn" data-stellar-background-ratio="0.4"
+         style="background-image:url('images/slider-bg.jpg');">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 col-sm-12">
+                  <div class="text-contant">
+                     <h2>
+                        <span class="center"><span class="icon"><img src="images/icon-logo.png" alt="#" /></span></span>
+                        <a href="" style="color: #0071d1; text-shadow: 0.5px 0 #fff, -0.5px 0 #fff, 0 0.5px #fff, 0 -0.5px #fff,
+                        0.5px 0.5px #fff, -0.5px -0.5px #fff, 0.5px -0.5px #fff, -0.5px 0.5px #fff;" class="typewrite"
+                           data-period="2000" data-type='[ "Suprime Life Care","Welcome to your advanced lab"]'>
+                           <span class="wrap"></span>
+                        </a>
+                     </h2>
+                  </div>
+               </div>
+            </div>
+            <!-- end row -->
+         </div>
+         <!-- end container -->
+      </div>
+      <!-- end section -->
+      <div id="time-table" class="time-table-section">
+         <div class="container">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+               <div class="row">
+                  <div class="service-time one" style="background:#2895f1;">
+                     <span class="info-icon"><i class="fa fa-droplet" aria-hidden="true"></i></span>
+                     <h3>Tests Available</h3>
+                     <ul>
+                        <ol>Private Facilities</ol>
+                        <ol>Public Facilities</ol>
+                        <ol>Clinical Research Sites</ol>
+                        <ol>Anatomic Pathology</ol>
+                        <ol>Clinical Pathology</ol>
+                        <ol>Blood Testing</ol>
+                        <ol>LC/MS Technology</ol>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+               <div class="row">
+                  <div class="service-time middle" style="background:#0071d1;">
+                     <span class="info-icon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                     <h3>Working Hours</h3>
+                     <div class="time-table-section">
+                        <ul>
+                           <li><span class="left">Monday - Friday</span><span class="right">8.00 – 18.00</span></li>
+                           <li><span class="left">Saturday</span><span class="right">8.00 – 16.00</span></li>
+                           <li><span class="left">Sunday</span><span class="right">8.00 – 13.00</span></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+               <div class="row">
+                  <div class="service-time three" style="background:#0060b1;">
+                     <span class="info-icon"><i class="fa fa-handshake-angle" aria-hidden="true"></i></span>
+                     <h3>Burton Richter</h3>
+                     <p>Innovation and renewal are requiredto keep a laboratory on the frontiers of science.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="about" class="section wow fadeIn">
+         <div class="container">
+            <div class="heading">
+               <span class="icon-logo"><img src="images/icon-logo.png" alt="#"></span>
+               <h2>What We Do</h2>
+            </div>
+            <!-- end title -->
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="message-box">
+                     <h2>Private Facilities</h2>
+                     <p class="lead"> The private health sector is the individuals and organizations that are neither
+                        owned nor directly controlled by governments and are involved in provision of health services.
+                     </p>
+                     <p>For the purposes of this section, the following definitions apply:(a) Public facility means a
+                        publicly or privately owned facility that accepts solid waste generated by other persons.(b)
+                        Private facility means a privately owned facility maintained on private property solely for the
+                        purpose of managing waste generated by the entity owning the site.(3) Financial assurance
+                        requirements - Instrument options. </p>
+                     <!-- <a href="" data-scroll class="btn btn-light btn-radius btn-brd grd1 effect-1">Learn More</a>-->
+                  </div>
+                  <!-- end messagebox -->
+               </div>
+               <!-- end col -->
+               <div class="col-md-6">
+                  <div class="post-media wow fadeIn">
+                     <a href="images/clinic_01.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i
+                           class="flaticon-unlink"></i></a>
+                     <img src="images/clinic_01.jpg" alt="" class="img-responsive">
+                  </div>
+                  <!-- end media -->
+               </div>
+               <!-- end col -->
+            </div>
+            <hr class="hr1">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="post-media wow fadeIn">
+                     <a href="images/clinic_02.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i
+                           class="flaticon-unlink"></i></a>
+                     <img src="images/clinic_02.jpg" alt="" class="img-responsive">
+                  </div>
+                  <!-- end media -->
+               </div>
+               <div class="col-md-6">
+                  <div class="message-box">
+                     <h2>Public Facilities</h2>
+                     <p class="lead">Public health system across nations is a conglomeration of all organized activities
+                        that prevent disease, prolong life and promote health and efficiency of its people. Indian
+                        healthcare system has been historically dominated by provisioning of medical care and neglected
+                        public health.
+                     </p>
+                     <p> These public facilities are typically used to measure the quality of air and water. However,
+                        many of the EPA’s facilities are highly specialized and research very specific issues. For
+                        instance, the Fish Toxicology Lab in Ohio spent decades catching fish in the Great Lakes region
+                        and testing them to discover new pathogens and protect fish stocks.s </p>
+                  </div>
+                  <!-- end messagebox -->
+               </div>
+               <!-- end col -->
+
+               <!-- end col -->
+            </div>
+            <hr class="hr1">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="message-box">
+                     <h2>Clinical Research Sites</h2>
+                     <p class="lead">CRFs are dedicated facilities where specialist clinical research and support staff
+                        from universities and NHS Trusts work together on patient-orientated commercial and
+                        non-commercial experimental medicine studies</p>
+                     <p> Clinical research is the comprehensive study of the safety and effectiveness of the most
+                        promising advances in patient care. Clinical research is different than laboratory research. It
+                        involves people who volunteer to help us better understand medicine and health. Lab research
+                        generally does not involve people — although it helps us learn which new ideas may help people.
+                     </p>
+                  </div>
+                  <!-- end messagebox -->
+               </div>
+               <!-- end col -->
+               <div class="col-md-6">
+                  <div class="post-media wow fadeIn">
+                     <a href="images/clinic_03.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i
+                           class="flaticon-unlink"></i></a>
+                     <img src="images/clinic_03.jpg" alt="" class="img-responsive">
+                  </div>
+                  <!-- end media -->
+               </div>
+               <!-- end col -->
+            </div>
+            <hr class="hr1">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="post-media wow fadeIn">
+                     <a href="images/clinic_04.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i
+                           class="flaticon-unlink"></i></a>
+                     <img src="images/clinic_04.jpg" alt="" class="img-responsive">
+                  </div>
+                  <!-- end media -->
+               </div>
+               <div class="col-md-6">
+                  <div class="message-box">
+                     <h2>Clinical Pathology</h2>
+                     <p class="lead">Clinical pathology covers many lab functions. It is concerned with disease
+                        diagnosis, treatment, and prevention. Clinical pathologists are healthcare providers with
+                        special training. They often direct all the special divisions of the lab. </p>
+                     <p>Clinical pathologists work in close collaboration with medical technologists, hospital
+                        administrations, and referring physicians to ensure the accuracy and optimal utilization of
+                        laboratory testing.
+
+                        Clinical pathology is one of the two major divisions of pathology, the other being anatomic
+                        pathology. Often, pathologists practice both anatomic and clinical pathology, a combination
+                        sometimes known as general pathology.</p>
+                  </div>
+                  <!-- end messagebox -->
+               </div>
+               <!-- end col -->
+
+               <!-- end col -->
+            </div>
+            <hr class="hr1">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="message-box">
+                     <h2>Blood Testing</h2>
+                     <p class="lead">A complete blood count (CBC) checks your blood for signs of infection, immune
+                        system problems, bleeding problems, and anemia. A blood chemistry panel gives your doctor
+                        information about your muscles, bones, heart, and other organs.</p>
+                     <p> Blood tests are common medical tests. You may have a blood test as part of a routine physical
+                        examination or because you have certain symptoms.
+
+                        There are many different blood tests. Some tests focus on your blood cells and platelets. Some
+                        evaluate substances in your blood such as electrolytes, proteins and hormones. Others measure
+                        certain minerals in your blood.
+                  </div>
+                  <!-- end messagebox -->
+               </div>
+               <!-- end col -->
+               <div class="col-md-6">
+                  <div class="post-media wow fadeIn">
+                     <a href="images/clinic_05.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i
+                           class="flaticon-unlink"></i></a>
+                     <img src="images/clinic_05.jpg" alt="" class="img-responsive">
+                  </div>
+                  <!-- end media -->
+               </div>
+               <!-- end col -->
+            </div>
+            <hr class="hr1">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="post-media wow fadeIn">
+                     <a href="images/clinic_06.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i
+                           class="flaticon-unlink"></i></a>
+                     <img src="images/clinic_06.jpg" alt="" class="img-responsive">
+                  </div>
+                  <!-- end media -->
+               </div>
+               <div class="col-md-6">
+                  <div class="message-box">
+                     <h2>LC/MS Technology</h2>
+                     <p class="lead">Liquid chromatography-mass spectrometry (LC–MS) is a powerful analytical technique
+                        used for separation, identification, and quantification of both unknown and known compounds as
+                        well as to elucidate the structure and chemical properties of different molecules.</p>
+                     <p> No matter what your application or matrices, our liquid chromatography and mass spectrometry
+                        (LC/MS) systems deliver the speed, sensitivity, exact mass information, wide dynamic range, and
+                        mass accuracy you need for having complete confidence in your results. These solutions are
+                        specifically designed for rapid and accurate mass identification and quantification across a
+                        broad range of applications.</p>
+                  </div>
+                  <!-- end messagebox -->
+               </div>
+               <!-- end col -->
+
+               <!-- end col -->
+            </div>
+            <!-- end row -->
+            <hr class="hr1">
+            <!-- end row -->
+         </div>
+         <!-- end container -->
+      </div>
+
+      <div id="testimonials" class="section wb wow fadeIn">
+         <div class="container">
+            <div class="heading">
+               <span class="icon-logo"><img src="images/icon-logo.png" alt="#"></span>
+               <h2>Get Started</h2>
+            </div>
+            <!-- end title -->
+            <div class="row">
+               <div class="text-contant">
+                  <button class="btn btn-primary btn-lg" onclick="window.location.href = '/auth/login?path=signup'" type="button">Get Started For free</button>
+               </div>
+            </div>
+            <!-- end row -->
+         </div>
+         <!-- end container -->
+      </div>
+      <!-- end section -->
+
+      <footer id="footer" class="footer-area wow fadeIn">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-6">
+                  <div class="logo padding">
+                     <a href=""><img src="images/logotext.jpeg" alt="Supreme lifecare"></a> 
+                     <p>You treat a disease, you win, you lose. You treat a person, I guarantee you, you`ll win, no matter what the outcome.
+                     </p>
+                  </div>
+               </div>
+               <div class="col-sm-6">
+                  <div class="footer-info padding">
+                     <h3>CONTACT US</h3>
+                     <p><i class="fa fa-map-marker" aria-hidden="true"></i> PO Box 1524 near navplace
+                     </p>
+                     <p><i class="fa fa-paper-plane" aria-hidden="true"></i> info@gmail.com</p>
+                     <p><i class="fa fa-phone" aria-hidden="true"></i> (+91) 856 854 7580</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <%- include('./components/footer') %>
+   </body>
+
+</html>

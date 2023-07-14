@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Supreme Lifecare | Admin | Appoinment Info</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/dashboard/plugins/fontawesome-free/css/all.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="/dashboard/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dashboard/dist/css/adminlte.min.css">
+    <link rel="shortcut icon" href="/images/icon-logo.png" type="image/x-icon" />
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed"><!--layout-footer-fixed-->
+    <div class="wrapper">
+        <!-- Preloader -->
+        <% if(!dev){ %>
+            <div class="preloader flex-column justify-content-center align-items-center">
+                <img class="animation__wobble" src="/images/icon-logo.png" alt="Dashboard Logo" height="60"
+                    width="60">
+            </div>
+            <% } %>
+                <!-- Navbar -->
+                <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+                    <!-- Left navbar links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                                    class="fas fa-bars"></i></a>
+                        </li>
+                        <li class="nav-item d-none d-sm-inline-block">
+                            <a href="/" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item d-none d-sm-inline-block">
+                            <a href="/dashboard/profile" class="nav-link">Profile</a>
+                        </li>
+                        <li class="nav-item d-none d-sm-inline-block">
+                            <a href="/dashboard" class="nav-link">Dashboard</a>
+                        </li>
+                    </ul>
+
+                    <!-- Right navbar links -->
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <img src="/drive/image/<%= user.ProfilePic %>" class="user-image img-circle elevation-2"
+                                    alt="User Image" style="height: 20px;">
+                                <span class="d-none d-md-inline">
+                                    <%=name%>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                <a href="/dashboard/profile" class="dropdown-item">
+                                    <i class="fas fa-user"></i> Profile
+                                </a>
+                                <a href="/dashboard/result" class="dropdown-item">
+                                    <i class="fas fa-poll"></i> Result
+                                </a>
+                                <a href="/auth/logout" class="dropdown-item">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <aside class="main-sidebar sidebar-light-lightblue elevation-4">
+                    <!-- Brand Logo -->
+                    <a href="/dashboard" class="brand-link">
+                        <img src="/images/icon-logo.png" alt="Dashboard Logo"
+                            class="brand-image img-circle elevation-3" style="opacity: .8">
+                        <span class="brand-text font-weight-light">Supreme Lifecare</span>
+                    </a>
+
+                    <!-- Sidebar -->
+                    <div class="sidebar">
+                        <!-- SidebarSearch Form -->
+                        <div class="form-inline mt-3">
+                            <div class="input-group" data-widget="sidebar-search">
+                                <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                                    aria-label="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-sidebar">
+                                        <i class="fas fa-search fa-fw"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sidebar Menu -->
+                        <nav class="mt-2">
+                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                                data-accordion="false">
+                                <li class="nav-item">
+                                    <a href="/admin" class="nav-link">
+                                        <i class="fas fa-home nav-icon"></i>
+                                        <p>Home</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/appoinments" class="nav-link active">
+                                        <i class="fas fa-calendar-check nav-icon"></i>
+                                        <p>Appoinments</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/results" class="nav-link">
+                                        <i class="fas fa-poll nav-icon"></i>
+                                        <p>Results</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/tests" class="nav-link">
+                                        <i class="fas fa-vials nav-icon"></i>
+                                        <p>Tests</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/category" class="nav-link">
+                                        <i class="fas fa-columns nav-icon"></i>
+                                        <p>Categories</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fas fa-users nav-icon"></i>
+                                        <p>Users</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fas fa-user-nurse nav-icon"></i>
+                                        <p>Lab Assistants</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- /.sidebar-menu -->
+                    </div>
+                    <!-- /.sidebar -->
+                </aside>
+                <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <div class="content-header no-print">
+                        <div class="container-fluid">
+                            <div class="row mb-2">
+                                <div class="col-sm-6">
+                                    <h1 class="m-0">Supreme Lifecare</h1>
+                                </div><!-- /.col -->
+                                <div class="col-sm-6">
+                                    <ol class="breadcrumb float-sm-right">
+                                        <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="/admin/booking">Appoinments</a></li>
+                                        <li class="breadcrumb-item active">Appoinment Info</li>
+                                    </ol>
+                                </div><!-- /.col -->
+                            </div><!-- /.row -->
+                            <hr>
+                        </div><!-- /.container-fluid -->
+                    </div>
+                    <!-- Main content -->
+                    <section class="content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card" id="AppoinmentCompleted">
+                                        <div class="card-header">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-6">
+                                                    <h1 class="card-title text-lg text-muted">Appoinment Info</h1>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="float-sm-right no-print">
+                                                        <% if (data.Status==6) { %>
+                                                            <a class="btn btn-info btn-sm" onclick="location.href = '/admin/results/?id=<%=data.ID%>'"
+                                                                data-id="<%= data.ID %>">Upload
+                                                                Report</a>
+                                                            <% } %>
+                                                                <a class="btn btn-dark btn-sm" data-id="<%= data.ID %>"
+                                                                    onclick="UpdateAppoinmentStatus(this)">Update
+                                                                    Status</a>
+                                                                <a class="btn btn-primary btn-sm"
+                                                                    data-id="<%= data.ID %>"
+                                                                    onclick="EditAppoinmentData(this)"><i
+                                                                        class="fas fa-edit"></i> Edit</a>
+                                                                <a class="btn btn-danger btn-sm"
+                                                                    data-id="<%= data.ID %>"
+                                                                    onclick="DeleteAppoinmentData(this)"><i
+                                                                        class="fas fa-trash"></i> Delete</a>
+                                                                <button type="button"
+                                                                    onclick="location.href = '/admin/appoinments'"
+                                                                    class="btn btn-outline-light btn-sm" title="Back">
+                                                                    <i class="fas fa-angle-left"></i> Back
+                                                                </button><a rel="noopener" class="btn btn-default btn-sm"
+                                                                onclick="window.print();"><i class="fas fa-print"></i>
+                                                                Print</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-2 border bg-gradient-info text-light">Appointment
+                                                    Id</div>
+                                                <div class="col-4 border">
+                                                    <%=data.ID%>
+                                                </div>
+                                                <div class="col-2 border bg-gradient-info text-light">Schedule</div>
+                                                <div class="col-4 border">
+                                                    <%=data.Time%>
+                                                </div>
+                                                <div class="col-2 border bg-gradient-info text-light">Patient Name
+                                                </div>
+                                                <div class="col-10 border">
+                                                    <%=patient.FirstName%>
+                                                </div>
+                                                <div class="col-1 border bg-gradient-info text-light">Gender</div>
+                                                <div class="col-3 border">
+                                                    <%=patient.Gender%>
+                                                </div>
+                                                <div class="col-1 border bg-gradient-info text-light">Contact #</div>
+                                                <div class="col-3 border">
+                                                    <%=patient.Number%>
+                                                </div>
+                                                <div class="col-1 border bg-gradient-info text-light">Email</div>
+                                                <div class="col-3 border">
+                                                    <%=patient.Email%>
+                                                </div>
+                                                <div class="col-2 border bg-gradient-info text-light">Address</div>
+                                                <div class="col-10 border">
+                                                    <%=patient.Address%>
+                                                </div>
+                                                <div class="col-2 border bg-gradient-info text-light">Status</div>
+                                                <div class="col-4 border" data-status="<%= data.Status %>">
+                                                </div>
+                                                <div class="col-2 border bg-gradient-info text-light">
+                                                    Transaction Id
+                                                </div>
+                                                <div class="col-4 border">
+                                                    <%= data.TransactionId %>
+                                                </div>
+                                                <% if (data.Status == 7 && data.Report) { %>
+                                                    <div class="col-2 border bg-gradient-info text-light">Result</div>
+                                                    <div class="col-4 border" data-status="<%= data.Status %>">
+                                                        <a href="/drive/result/<%= data.Report %>" target="_blank">View Report</a>
+                                                    </div>
+                                                    <div class="col-2 border bg-gradient-info text-light">
+                                                        Download
+                                                    </div>
+                                                    <div class="col-4 border">
+                                                        <a href="/drive/result/<%= data.Report %>" download="<%= data.Report %>">Download</a>
+                                                    </div>
+                                                <% } %>
+                                            </div>
+                                            <hr>
+                                            <fieldset>
+                                                <legend class="text-muted">List of Tests</legend>
+                                                <table class="table table-striped table-bordered">
+                                                    <colgroup>
+                                                        <col width="10%">
+                                                        <col width="45%">
+                                                        <col width="45%">
+                                                    </colgroup>
+                                                    <thead>
+                                                        <tr class="bg-gradient-info text-light">
+                                                            <th class="text-center">#</th>
+                                                            <th>Name</th>
+                                                            <th>Price</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="py-1 px-2 text-center">1</td>
+                                                            <td class="py-1 px-2">
+                                                                <%=data.TestId %>
+                                                            </td>
+                                                            <td class="py-1 px-2 text-right">
+                                                                <%=data.Amount%>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                        </div><!-- /.container-fluid -->
+                        <!-- /.row -->
+                    </section>
+                    <div class="modal fade" id="EditAppoinment" data-backdrop="static" tabindex="-1" role="dialog"
+                        aria-labelledby="EditAppoinmentTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="overlay" id="EditAppoinmentOverlay" style="display: none;">
+                                    <i class="fas fa-2x fa-sync fa-spin"></i>
+                                </div>
+                                <form id="Form-EditAppoinment">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="EditAppoinmentTitle">Edit Appoinment</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="appoinment-date" class="col-form-label">Appoinment Date:</label>
+                                            <input type="date" class="form-control" id="appoinment-date" required>
+                                            <input type="text" id="appoinment-id" value="" hidden>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="appoinment-time" class="col-form-label">Appoinment
+                                                Time:</label>
+                                            <select class="form-control" title="Select Time" id="appoinment-time"
+                                                required>
+                                                <option value="">Select Time</option>
+                                                <option value="morning">Morning</option>
+                                                <option value="afternoon">After Noon</option>
+                                                <option value="evening">Evening</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="appoinment-hour" class="col-form-label">Appoinment
+                                                Hour:</label>
+                                            <select class="form-control" title="Select Hour" id="appoinment-hour"
+                                                required>
+                                                <option value="">Select Time</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Update Appoinment</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="UpdateAppoinment" data-backdrop="static" tabindex="-1" role="dialog"
+                        aria-labelledby="UpdateAppoinmentTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="overlay" id="UpdateAppoinmentOverlay" style="display: none;">
+                                    <i class="fas fa-2x fa-sync fa-spin"></i>
+                                </div>
+                                <form id="Form-UpdateAppoinment">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="UpdateAppoinmentTitle">Update Appoinment Status</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="appoinment-status" class="col-form-label">Appoinment
+                                                Status:</label>
+                                            <select class="form-control" title="Select new appoinment status"
+                                                id="appoinment-status" required>
+                                                <option value="">Select Appoinment status</option>
+                                                <option value="1">Pending</option>
+                                                <option value="2">Approved</option>
+                                                <option value="3">Rejected</option>
+                                                <option value="4">Sample Collected</option>
+                                                <option value="5">Delivered to Lab</option>
+                                                <option value="6">Done</option>
+                                                <option value="8">Cancelled</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="appoinment-remarks" class="col-form-label">Appoinment
+                                                Remarks:</label>
+                                            <textarea id="appoinment-remarks" rows="3" class="form-control"></textarea>
+                                            <input type="text" id="appoinment-id1" value="" hidden>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Update Appoinment</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <a id="back-to-top" href="#" class="btn btn-secondary back-to-top no-print" role="button"
+                        aria-label="Scroll to top">
+                        <i class="fas fa-chevron-up"></i>
+                    </a>
+                </div>
+                <footer class="main-footer no-print">
+                    <strong>Copyright &copy; 2023-2024 <a href="/">Supreme Lifecare</a>.</strong>
+                    All rights reserved.
+                    <div class="float-right d-none d-sm-inline-block">
+                        <b>Version</b> 1.0 (beta)
+                    </div>
+                </footer>
+    </div>
+
+    <script src="/dashboard/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script defer src="/dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script defer src="/dashboard/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script defer src="/dashboard/dist/js/adminlte.js"></script>
+
+    <script defer src="/dashboard/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script defer src="/dashboard/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+    <!--Sweetalert-->
+    <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Custom script -->
+    <script defer src="/dashboard/dist/js/custom.js"></script>
+    <script>
+        $(function () {
+            document.getElementById("appoinment-time").onchange = function (event) {
+                var Hour = document.getElementById("appoinment-hour");
+                var Id = event.target.value;
+                Hour.innerHTML = '';
+                if (Id) {
+                    Hour.options.add(new Option("Select a Hour", ""));
+                    TimeData[Id].Time.forEach(item => {
+                        Hour.options.add(new Option(item.Name, item.ID));
+                    })
+                } else Hour.options.add(new Option("Select a Time", ""));
+            }
+            $('#Form-EditAppoinment').submit(() => {
+                const PutApi = window.location.origin + "/admin/api/edit/appoinment"
+                event.preventDefault();
+                const date = document.getElementById("appoinment-date").value;
+                const time = document.getElementById("appoinment-time").value;
+                const hour = document.getElementById("appoinment-hour").value;
+                const id = document.getElementById("appoinment-id").value;
+                if (!date) return showAlert('error', 'Select a appoinment date to continue');
+                if (!time) return showAlert('error', 'Select a appoinment time to continue');
+                if (!hour) return showAlert('error', 'Select a appoinment hour to continue');
+                $("#EditAppoinmentOverlay").show();
+                const xhr = new XMLHttpRequest();
+                xhr.withCredentials = true;
+                xhr.addEventListener("readystatechange", function () {
+                    if (this.readyState === this.DONE) {
+                        const res = JSON.parse(this.responseText);
+                        if (res.status === 200) {
+                            showAlert('success', res.message);
+                            _ReloadPage();
+                        } else {
+                            showAlert('error', res.message);
+                        }
+                        $("#EditAppoinmentOverlay").hide();
+                    } else {
+                        if (xhr.status == 404) {
+                            $("#EditAppoinmentOverlay").hide();
+                            return showAlert('error', 'Failed to update appoinment');
+                        }
+                    }
+                });
+                xhr.open("PUT", PutApi);
+                xhr.setRequestHeader("Accept", "*/*");
+                xhr.setRequestHeader("Content-Type", "application/json");
+                let data = { id: id, date: date, time: time, hour: hour };
+                xhr.send(JSON.stringify(data));
+            })
+            $('#Form-UpdateAppoinment').submit(() => {
+                const PutApi = window.location.origin + "/admin/api/update/appoinment"
+                event.preventDefault();
+                const status = document.getElementById("appoinment-status").value;
+                const remarks = document.getElementById("appoinment-remarks").value;
+                const id = document.getElementById("appoinment-id1").value;
+                if (!status) return showAlert('error', 'Select a appoinment date to continue');
+                $("#UpdateAppoinmentOverlay").show();
+                const xhr = new XMLHttpRequest();
+                xhr.withCredentials = true;
+                xhr.addEventListener("readystatechange", function () {
+                    if (this.readyState === this.DONE) {
+                        const res = JSON.parse(this.responseText);
+                        if (res.status === 200) {
+                            showAlert('success', res.message);
+                            _ShowAppoinmentStatus(parseInt(status));
+                            _ReloadPage();
+                        } else {
+                            showAlert('error', res.message);
+                        }
+                        $("#UpdateAppoinmentOverlay").hide();
+                    } else {
+                        if (xhr.status == 404) {
+                            $("#UpdateAppoinmentOverlay").hide();
+                            return showAlert('error', 'Failed to update appoinment');
+                        }
+                    }
+                });
+                xhr.open("PUT", PutApi);
+                xhr.setRequestHeader("Accept", "*/*");
+                xhr.setRequestHeader("Content-Type", "application/json");
+                let data = { id: id, status: parseInt(status) };
+                xhr.send(JSON.stringify(data));
+            })
+        });
+        const TimeData = {
+            "morning": {
+                "Time": [
+                    {
+                        "ID": "8:00to10:00",
+                        "Name": "8:00 AM to 10:00 AM"
+                    },
+                    {
+                        "ID": "10:00to12:00",
+                        "Name": "10:00 AM to 12:00 PM"
+                    }
+                ],
+                "Name": "Morning"
+            },
+            "afternoon": {
+                "Time": [
+                    {
+                        "ID": "1:30to2:30",
+                        "Name": "1:30 PM to 2:30 PM"
+                    },
+                    {
+                        "ID": "2:30to3:30",
+                        "Name": "2:30 PM to 3:30 PM"
+                    }
+                ],
+                "Name": "After Noon"
+            },
+            "evening": {
+                "Time": [
+                    {
+                        "ID": "4:00to6:00",
+                        "Name": "4:00 PM to 6:00 PM"
+                    },
+                    {
+                        "ID": "6:30to8:00",
+                        "Name": "6:30 PM to 8:00 PM"
+                    },
+                    {
+                        "ID": "8:30to10:00",
+                        "Name": "8:30 PM to 10:00 PM"
+                    }
+                ],
+                "Name": "Evening"
+            }
+        };
+
+        function EditAppoinmentData(Data) {
+            const id = Data.dataset.id;
+            $('#EditAppoinment').modal('show');
+            $("#EditAppoinmentOverlay").show();
+            const GetApi = window.location.origin + "/admin/api/view/appoinment";
+            const date = document.getElementById("appoinment-date");
+            const time = document.getElementById("appoinment-time");
+            const hour = document.getElementById("appoinment-hour");
+            const bookingID = document.getElementById("appoinment-id");
+            date.value = time.value = hour.value = '';
+            const xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+            xhr.addEventListener("readystatechange", function () {
+                if (this.readyState === this.DONE) {
+                    const res = JSON.parse(this.responseText);
+                    if (res.status === 200) {
+                        $("#EditAppoinmentOverlay").hide();
+                        bookingID.value = res.data.ID;
+                        date.value = new Date(res.data.Date).toISOString().slice(0, 10);
+                        time.value = res.data.Time;
+                        hour.options.add(new Option("Select a Hour", ""));
+                        TimeData[res.data.Time].Time.forEach(item => {
+                            hour.options.add(new Option(item.Name, item.ID));
+                        })
+                        hour.value = res.data.Hour;
+                    } else {
+                        $('#EditAppoinment').modal('hide');
+                        showAlert('error', res.message);
+                    }
+                } else {
+                    if (xhr.status == 404) {
+                        $('#EditAppoinment').modal('hide');
+                        return showAlert('error', 'An error occoured while fetching');
+                    }
+                }
+            });
+            xhr.open("GET", GetApi + "/?id=" + id);
+            xhr.setRequestHeader("Accept", "*/*");
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(null);
+        }
+        function UpdateAppoinmentStatus(Data) {
+            const id = Data.dataset.id;
+            $('#UpdateAppoinment').modal('show');
+            $("#UpdateAppoinmentOverlay").show();
+            const GetApi = window.location.origin + "/admin/api/view/appoinment";
+            const status = document.getElementById("appoinment-status");
+            const bookingID = document.getElementById("appoinment-id1");
+            status.value = '';
+            const xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+            xhr.addEventListener("readystatechange", function () {
+                if (this.readyState === this.DONE) {
+                    const res = JSON.parse(this.responseText);
+                    if (res.status === 200) {
+                        $("#UpdateAppoinmentOverlay").hide();
+                        bookingID.value = res.data.ID;
+                        status.value = `${res.data.Status}`;
+                    } else {
+                        $('#UpdateAppoinment').modal('hide');
+                        showAlert('error', res.message);
+                    }
+                } else {
+                    if (xhr.status == 404) {
+                        $('#UpdateAppoinment').modal('hide');
+                        return showAlert('error', 'An error occoured while fetching');
+                    }
+                }
+            });
+            xhr.open("GET", GetApi + "/?id=" + id);
+            xhr.setRequestHeader("Accept", "*/*");
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(null);
+        }
+        function DeleteAppoinmentData(Data) {
+            const id = Data.dataset.id;
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Are you sure to delete this appoinment",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Proceed!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const DeleteApi = window.location.origin + "/admin/api/delete/appoinment";
+                    const xhr = new XMLHttpRequest();
+                    xhr.withCredentials = true;
+                    xhr.addEventListener("readystatechange", function () {
+                        if (this.readyState === this.DONE) {
+                            const res = JSON.parse(this.responseText);
+                            if (res.status === 200) {
+                                showAlert('success', res.message);
+                                window.location.href = '/admin/appoinments';
+                            } else {
+                                showAlert('error', res.message);
+                            }
+                        } else {
+                            if (xhr.status == 404) {
+                                return showAlert('error', 'An error occoured while fetching');
+                            }
+                        }
+                    });
+                    xhr.open("DELETE", DeleteApi);
+                    xhr.setRequestHeader("Accept", "*/*");
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.send(JSON.stringify({ id: id }));
+                }
+            })
+        }
+        $(document).ready(() => {
+            var ModalDate = document.getElementById("appoinment-date");
+            var CurrentDate = new Date();
+            ModalDate.min = CurrentDate.toISOString().split('T')[0];
+            const MaxDate = new Date(CurrentDate);
+            MaxDate.setDate(MaxDate.getDate() + 10);
+            ModalDate.max = MaxDate.toISOString().split('T')[0];
+
+            const Node = document.querySelector('div[data-status]');
+            if (Node) {
+                var status = parseInt(Node.dataset.status);
+                if (status == 1) Node.innerHTML = '<span class="text-md">Pending</span>';
+                else if (status == 2) Node.innerHTML = '<span class="text-md">Approved</span>';
+                else if (status == 3) Node.innerHTML = '<span class="text-md">Rejected</span>';
+                else if (status == 4) Node.innerHTML = '<span class="text-md">Sample Collected</span>';
+                else if (status == 5) Node.innerHTML = '<span class="text-md">Delivered to Lab</span>';
+                else if (status == 6) Node.innerHTML = '<span class="text-md">Done</span>';
+                else if (status == 7) Node.innerHTML = '<span class="text-md">Report Uploaded</span>';
+                else if (status == 8) Node.innerHTML = '<span class="text-md">Cancelled</span>';
+            }
+        })
+        function _ShowAppoinmentStatus(status) {
+            const Node = document.querySelector('div[data-status]');
+            if (Node) {
+                if (status == 1) Node.innerHTML = '<span class="text-md">Pending</span>';
+                else if (status == 2) Node.innerHTML = '<span class="text-md">Approved</span>';
+                else if (status == 3) Node.innerHTML = '<span class="text-md">Rejected</span>';
+                else if (status == 4) Node.innerHTML = '<span class="text-md">Sample Collected</span>';
+                else if (status == 5) Node.innerHTML = '<span class="text-md">Delivered to Lab</span>';
+                else if (status == 6) Node.innerHTML = '<span class="text-md">Done</span>';
+                else if (status == 7) Node.innerHTML = '<span class="text-md">Report Uploaded</span>';
+                else if (status == 8) Node.innerHTML = '<span class="text-md">Cancelled</span>';
+            }
+        }
+
+    </script>
+</body>
+
+</html>

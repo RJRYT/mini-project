@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Supreme Lifecare | Results</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/dashboard/plugins/fontawesome-free/css/all.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="/dashboard/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dashboard/dist/css/adminlte.min.css">
+    <link rel="shortcut icon" href="/images/icon-logo.png" type="image/x-icon" />
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed"><!--layout-footer-fixed-->
+    <div class="wrapper">
+        <!-- Preloader -->
+        <% if(!dev){ %>
+            <div class="preloader flex-column justify-content-center align-items-center">
+                <img class="animation__wobble" src="/images/icon-logo.png" alt="Dashboard Logo" height="60" width="60">
+            </div>
+            <% } %>
+                <!-- Navbar -->
+                <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+                    <!-- Left navbar links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                                    class="fas fa-bars"></i></a>
+                        </li>
+                        <li class="nav-item d-none d-sm-inline-block">
+                            <a href="/" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item d-none d-sm-inline-block">
+                            <a href="#" class="nav-link">Contact</a>
+                        </li>
+                        <%if(user.Admin){%>
+                            <li class="nav-item d-none d-sm-inline-block">
+                                <a href="/admin" class="nav-link">Admin</a>
+                            </li>
+                            <%}%>
+                    </ul>
+
+                    <!-- Right navbar links -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Notifications Dropdown Menu -->
+                        <li class="nav-item dropdown" style="display: none;">
+                            <a class="nav-link" data-toggle="dropdown" href="#">
+                                <i class="far fa-bell"></i>
+                                <span class="badge badge-warning navbar-badge">15</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                <span class="dropdown-item dropdown-header">15 Notifications</span>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-envelope mr-2"></i> 4 new messages
+                                    <span class="float-right text-muted text-sm">3 mins</span>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-users mr-2"></i> 8 friend requests
+                                    <span class="float-right text-muted text-sm">12 hours</span>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-file mr-2"></i> 3 new reports
+                                    <span class="float-right text-muted text-sm">2 days</span>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                                <i class="fas fa-expand-arrows-alt"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <img src="/drive/image/<%= image %>" class="user-image img-circle elevation-2"
+                                    alt="User Image" style="height: 20px;">
+                                <span class="d-none d-md-inline">
+                                    <%=name%>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                <a class="dropdown-item">
+                                    <img src="/drive/image/<%= image %>" class="user-image img-circle elevation-2"
+                                        alt="User Image" style="height: 20px;">
+                                    <span class="d-none d-md-inline">
+                                        <%=name%>
+                                    </span>
+                                </a>
+                                <hr>
+                                <a href="/dashboard/profile" class="dropdown-item">
+                                    <i class="fas fa-user"></i> Profile
+                                </a>
+                                <%if(user.Admin){%>
+                                    <a href="/admin" class="dropdown-item">
+                                        <i class="fas fa-user-shield"></i> Admin
+                                    </a>
+                                    <%}%>
+                                        <a href="/dashboard/result" class="dropdown-item  active">
+                                            <i class="fas fa-poll"></i> Result
+                                        </a>
+                                        <a href="/auth/logout" class="dropdown-item">
+                                            <i class="fas fa-sign-out-alt"></i> Logout
+                                        </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <aside class="main-sidebar sidebar-light-lightblue elevation-4">
+                    <!-- Brand Logo -->
+                    <a href="/dashboard" class="brand-link">
+                        <img src="/images/icon-logo.png" alt="Dashboard Logo" class="brand-image img-circle elevation-3"
+                            style="opacity: .8">
+                        <span class="brand-text font-weight-light">Supreme Lifecare</span>
+                    </a>
+
+                    <!-- Sidebar -->
+                    <div class="sidebar">
+                        <!-- Sidebar user panel (optional) -->
+                        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                            <div class="image">
+                                <img src="/drive/image/<%= image %>" class="img-circle elevation-2" alt="User Image">
+                            </div>
+                            <div class="info">
+                                <a href="/dashboard/profile" class="d-block">
+                                    <%=name%>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- SidebarSearch Form -->
+                        <div class="form-inline">
+                            <div class="input-group" data-widget="sidebar-search">
+                                <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                                    aria-label="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-sidebar">
+                                        <i class="fas fa-search fa-fw"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sidebar Menu -->
+                        <nav class="mt-2">
+                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                                data-accordion="false">
+                                <li class="nav-item">
+                                    <a href="/dashboard" class="nav-link">
+                                        <i class="fas fa-home nav-icon"></i>
+                                        <p>Home</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/dashboard/booking" class="nav-link">
+                                        <i class="fas fa-calendar-check nav-icon"></i>
+                                        <p>Appointment</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link active">
+                                        <i class="fas fa-poll nav-icon"></i>
+                                        <p>Result</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-info-circle"></i>
+                                        <p>
+                                            Status
+                                            <i class="right fas fa-angle-left"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Result Status</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Appointment Status</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-phone-alt"></i>
+                                        <p>
+                                            Contact Us
+                                            <i class="right fas fa-angle-left"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Customer Care</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Request Call Back</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- /.sidebar-menu -->
+                    </div>
+                    <!-- /.sidebar -->
+                </aside>
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <div class="container-fluid">
+                            <div class="row mb-2">
+                                <div class="col-sm-6">
+                                    <h1>Result</h1>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ol class="breadcrumb float-sm-right">
+                                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                                        <li class="breadcrumb-item active">Result</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <% if (!user.Setuped) { %>
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                            <strong>Warning </strong> You didn't complete your profile. Complete from <a
+                                                href="/dashboard/profile" class="alert-link">Here</a>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                        </div><!-- /.container-fluid -->
+                    </section>
+
+                    <!-- Main content -->
+                    <section class="content">
+                        <div class="container-fluid">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h3 class="card-title">Current avaliable result</h3>
+                                            </div>
+                                            <!-- /.card-header -->
+                                            <div class="card-body">
+                                                <table id="Results" class="table table-bordered table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>S.No</th>
+                                                            <th>ID</th>
+                                                            <th>Test</th>
+                                                            <th>Uploaded Date</th>
+                                                            <th>Remarks</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% data.forEach((item, index)=> { %>
+                                                            <tr>
+                                                                <td>
+                                                                    <%= index + 1 %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= item.ID %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= item.Test %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= item.Date %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= item.Remark %>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="/drive/result/<%= item.Report %>"
+                                                                        target="_blank" class="btn btn-info btn-sm"><i
+                                                                            class="fas fa-eye"></i></a>
+                                                                    <a href="/drive/result/<%= item.Report %>"
+                                                                        download="<%= item.Report %>"
+                                                                        class="btn btn-primary btn-sm"><i
+                                                                            class="fas fa-download"></i></a>
+                                                                    <a onclick="showAlert('error','Not avaliable')"
+                                                                        class="btn btn-danger btn-sm"><i
+                                                                            class="fas fa-trash"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                            <% }) %>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- /.card-body -->
+                                        </div>
+                                        <!-- /.card -->
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+                            </div><!-- /.container-fluid -->
+                            <!-- /.row -->
+                        </div><!-- /.container-fluid -->
+                    </section>
+                    <!-- /.content -->
+                    <a id="back-to-top" href="#" class="btn btn-secondary back-to-top" role="button"
+                        aria-label="Scroll to top">
+                        <i class="fas fa-chevron-up"></i>
+                    </a>
+                </div>
+                <footer class="main-footer">
+                    <strong>Copyright &copy; 2023-2024 <a href="/">Supreme Lifecare</a>.</strong>
+                    All rights reserved.
+                    <div class="float-right d-none d-sm-inline-block">
+                        <b>Version</b> 1.0 (beta)
+                    </div>
+                </footer>
+    </div>
+
+    <script src="/dashboard/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script defer src="/dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script defer src="/dashboard/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script defer src="/dashboard/dist/js/adminlte.js"></script>
+
+    <script defer src="/dashboard/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script defer src="/dashboard/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+    <!--Sweetalert-->
+    <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Custom script -->
+    <script defer src="/dashboard/dist/js/custom.js"></script>
+    <script>
+        $(document).ready(() => {
+            $('#Results').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true,
+                "responsive": false,
+            });
+        })
+    </script>
+</body>
+
+</html>
