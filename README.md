@@ -1,41 +1,55 @@
 ## Mini Project
 
-This is a mini project for a medical lab management system. It is built using the Express framework and MongoDB.
+This is a simple web application that allows users to book appointments for lab tests. It also allows users to view their test results.
 
-### Prerequisites
+## Getting Started
 
-To run this project, you will need the following:
-
-* Node.js
-* MongoDB
-* npm
-
-### Installation
-
-To install the dependencies, run the following command:
+To get started, clone the repository to your local machine. Then, install the dependencies by running the following command:
 
 ```
 npm install
 ```
 
-### Running the Project
-
-To run the project, run the following command:
+Once the dependencies are installed, you can start the server by running the following command:
 
 ```
 npm start
 ```
 
-The project will be running on port 3000. You can access it at http://localhost:3000.
+The server will be running on port 3000. You can access the application at http://localhost:3000.
 
-### Documentation
+## User Authentication
 
-The documentation for the project can be found in the [docs](docs) directory.
+Users can register and login to the application using their email address and password.
 
-### Contributing
+## Booking Appointments
 
-If you would like to contribute to the project, please fork the repository and submit a pull request.
+Users can book appointments for lab tests by selecting a test type, date, and time.
 
-### License
+## Viewing Test Results
 
-The project is licensed under the MIT License.
+Users can view their test results by clicking on the "My Results" link in the navigation bar.
+
+## Error Handling
+
+The application handles errors gracefully. If an error occurs, the user will be presented with an error message.
+
+## Testing
+
+The application is tested using Jest. To run the tests, run the following command:
+
+```
+npm test
+```
+
+## Deployment
+
+The application can be deployed to a production server using a variety of methods. One popular method is to use a cloud-based hosting service such as AWS or Google Cloud Platform.
+
+## Contributing
+
+Contributions are welcome! Please submit a pull request if you have any improvements or bug fixes.
+
+## License
+
+The application is licensed under the MIT License.
