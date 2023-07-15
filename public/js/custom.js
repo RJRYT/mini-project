@@ -208,13 +208,26 @@ var TxtType = function(el, toRotate, period) {
         document.body.appendChild(css);
     };
 
-/*== map js ==*/
-
-    function myMap() {
-        var mapProp= {
-            center:new google.maps.LatLng(51.508742,-0.120850),
-            zoom:5,
-        };
-        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-    }
-	
+const AllFacts = [
+    "Protein is required to form blood cells in the body. Without it, the human body could not survive",
+    "Exercises to reduce hypertension include resistance exercises, aerobic exercises, isometric resistance exercises and others",
+    "Most children who develop asthma will do so before their fifth birthday",
+    "Dentists who work with braces and bridges, and implants, as well as replacing missing facial structures, are referred to as prosthodontics dentists",
+    "If shingles affects an eye the individual may experience vision loss",
+    "The most common cause of death in the United States is heart disease",
+    "People with shingles should stay away from pregnant women and newborns, and those with weak immune systems",
+    "Botulism is not spread by human-to-human contact",
+    "Epilepsy can begin at any age, from childhood to those over the age of 65",
+    "It is estimated that as much as 37% of the world's population suffers from hypertension",
+    "It is also possible to die from prolonged seizures, referred to as status epilepticus",
+    "In the Americas yellow fever is most common in Bolivia, Brazil, Ecuador, Columbia, and Peru",
+    "Eating a lot of salt can result in dehydration.",
+    "People should also use lip balm with sunscreen to help protect the lips from the risk of skin cancer",
+    "You can't drown head lice by keeping your hair under water. They can hold their breath for up to eight hours",
+    "Smallpox was wiped out because of the vaccine. Vaccination for the disease is no longer required",
+    "The second most common type of bacterial pneumonia is haemophilus influenza.",
+    "It can take several years for symptoms of high blood pressure to appear, even when readings are very high",
+    "It would take the caffeine found in 100 cups of coffee, consumed in four hours, to kill an adult.",
+    "Once infected with malaria, a person's chances of survival often depend on how quickly they seek treatment"
+];
+document.getElementById("FactArea").innerHTML = AllFacts[Math.floor(Math.random() * AllFacts.length)];
