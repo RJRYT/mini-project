@@ -218,4 +218,3 @@ var TxtType = function(el, toRotate, period) {
         var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
     }
 	
-/*== map js ==*/	
