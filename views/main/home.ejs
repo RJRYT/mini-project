@@ -107,9 +107,9 @@
                      <h3>Working Hours</h3>
                      <div class="time-table-section">
                         <ul>
-                           <li><span class="left">Monday - Friday</span><span class="right">8.00 – 18.00</span></li>
-                           <li><span class="left">Saturday</span><span class="right">8.00 – 16.00</span></li>
-                           <li><span class="left">Sunday</span><span class="right">8.00 – 13.00</span></li>
+                           <li><span class="left">Monday - Friday</span><span class="right">8.00 AM – 10.00 PM</span></li>
+                           <li><span class="left">Saturday</span><span class="right">8.00 AM – 10.00 PM</span></li>
+                           <li><span class="left">Sunday</span><span class="right">8.00 AM – 10.00 PM</span></li>
                         </ul>
                      </div>
                   </div>
@@ -313,12 +313,20 @@
          <div class="container">
             <div class="heading">
                <span class="icon-logo"><img src="images/icon-logo.png" alt="#"></span>
-               <h2>Get Started</h2>
+               <% if (status) { %>
+                <h3>Goto Dashboard</h3>
+               <% } else { %>
+                  <h2>Get Started</h2>
+                <% } %>
             </div>
             <!-- end title -->
             <div class="row">
                <div class="text-contant">
-                  <button class="btn btn-primary btn-lg" onclick="window.location.href = '/auth/login?path=signup'" type="button">Get Started For free</button>
+                  <% if (status) { %>
+                     <button class="btn btn-primary btn-lg" onclick="window.location.href = '/dashboard'" type="button">Goto Dashboard</button>
+                    <% } else { %>
+                     <button class="btn btn-primary btn-lg" onclick="window.location.href = '/auth/login?path=signup'" type="button">Get Started For free</button>
+                     <% } %>
                </div>
             </div>
             <!-- end row -->

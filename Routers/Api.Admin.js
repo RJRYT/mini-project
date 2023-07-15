@@ -296,7 +296,7 @@ router.post('/appoinment/upload/result', fileUpload({ useTempFiles: true }), asy
                                         await appoinment.save();
                                         return res.status(200).json({ "status": 200, "message": "Report uploaded successfully" });
                                     }
-                                });
+                                }); 
                             } else return res.status(200).json({ "status": 403, "message": "No data found to update" });
                         }
                     });

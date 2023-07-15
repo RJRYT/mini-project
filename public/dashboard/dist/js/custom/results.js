@@ -102,7 +102,7 @@ function UploadReport(appoinment) {
     $('#UploadResult').modal('show');
     $("#UploadResultOverlay").show();
     const bookingID = document.getElementById("appoinment-id");
-    const GetApi = window.location.origin + "/api/view/appoinment";
+    const GetApi = window.location.origin + "/admin/api/view/appoinment";
     const xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
     xhr.addEventListener("readystatechange", function () {
