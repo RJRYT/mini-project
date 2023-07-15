@@ -21,7 +21,6 @@ require('dotenv').config();
 /**
  * Constant variables
  */
-console.clear();
 console.log("|*********************************************");
 console.log("|          STARTING MINI PROJECT");
 console.log("|          Project Members:");
