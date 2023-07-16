@@ -115,7 +115,8 @@ router.get('/users', async function (req, res) {
                 expired = false;
             }
             const UserPic = session.user.ProfilePic?session.user.ProfilePic:"defaultpic.png";
-            const data = { "name": session.username, "session": !expired, "email": session.user.Email, "id": session.user._id, "role": (session.user.Admin ? "Admin" : (session.user.Staff ? "Staff" : "Patient")), "pic": UserPic };
+            let data = { "name": session.username, "session": !expired, "email": session.user.Email, "id": session.user._id, "role": (session.user.Admin ? "Admin" : (session.user.Staff ? "Staff" : "Patient")), "pic": UserPic };
+            data.metadata = `ip:${session.ip || "Unknown"}, agent:${session.agent || "Unknown"}`;
             AllUsers.push(data);
         })
         Users.forEach(user => {
