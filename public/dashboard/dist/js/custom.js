@@ -24,15 +24,14 @@ function ChangePassView(tagid, inputid, recursion = false) {
     if (!recursion) setTimeout(function () { ChangePassView(tagid, inputid, true); }, 1000);
 }
 
-function _ReloadPage(){
+function _ReloadPage() {
     setTimeout(ReloadNested, 3000);
-    function ReloadNested()
-    {
+    function ReloadNested() {
         window.location.reload();
     }
 }
 
-$(document).ready(()=>{
+$(document).ready(() => {
     let MyEmojis = [
         "😀",
         "😁",
@@ -43,7 +42,7 @@ $(document).ready(()=>{
         "😆",
         "😇",
         "😈",
-        "😉",   
+        "😉",
         "😊",
         "😋",
         "😌",
@@ -52,10 +51,10 @@ $(document).ready(()=>{
         "😏",
     ];
     let title = document.title;
-    window.addEventListener('blur',()=>{
-        document.title = `(Not Active) - (${MyEmojis[Math.floor((Date.now()/100)%MyEmojis.length)]}) -${title}`;
+    window.addEventListener('blur', () => {
+        document.title = `(Not Active) - (${MyEmojis[Math.floor((Date.now() / 100) % MyEmojis.length)]}) -${title}`;
     });
-    window.addEventListener('focus',()=>{
+    window.addEventListener('focus', () => {
         document.title = title;
     });
 })

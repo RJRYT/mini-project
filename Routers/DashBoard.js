@@ -4,6 +4,13 @@ const Appoinment = require('../DbModel/appoinments');
 const Test = require('../DbModel/tests');
 const Reports = require('../DbModel/results');
 
+router.use(function (req, res, next) {
+    res.appendHeader("Cache-Control", "public, max-age=300");
+    res.appendHeader("Pragma", "cache");
+    res.appendHeader("Expires", "300");
+    next();
+});
+
 router.get('/', function (req, res) {
     if (!req.session.loggedIn)
         res.redirect('/auth/login')
