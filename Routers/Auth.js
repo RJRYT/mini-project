@@ -3,7 +3,6 @@ router = express.Router();
 var passwordHash = require('password-hash');
 const UserDB = require('../DbModel/user');
 const AppStats = require('../DbModel/stats');
-const rateLimit = require('express-rate-limit');
 const UserAgent = require('useragent');
 
 router.use(function (req, res, next) {
@@ -12,13 +11,6 @@ router.use(function (req, res, next) {
     res.appendHeader("Expires", "0");
     next();
 });
-const AuthLimiter = rateLimit({
-    windowMs: 15*60*1000,
-    max: 50,
-    message: 'Too many requests from this ip. please try again after 15 minutes.'
-});
-
-router.use(AuthLimiter);
 
 router.get('/', (req, res) => {
     return res.redirect('/auth/login');
