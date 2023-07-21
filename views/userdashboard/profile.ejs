@@ -242,8 +242,8 @@
                                     <div class="card card-primary card-outline">
                                         <div class="card-body box-profile">
                                             <div class="text-center">
-                                                <img id="profilepic1" class="profile-user-img img-fluid img-circle"
-                                                    src="/drive/image/<%= image %>" alt="User profile picture">
+                                                <img id="profilepic1" class="profile-user-img imgfix img-fluid img-circle"
+                                                    src="/drive/image/<%= image %>" alt="User profile picture" style="height: 120px; width: 120px;">
                                             </div>
 
                                             <h3 class="profile-username text-center">
@@ -274,6 +274,11 @@
 
                                             <p class="text-muted">
                                                 <%=user.FirstName%>
+                                            </p>
+                                            <strong><i class="fas fa-angle-right mr-1"></i> Id</strong>
+
+                                            <p class="text-muted">
+                                                <%=user._id%>
                                             </p>
                                             <strong><i class="fas fa-angle-right mr-1"></i> Email</strong>
 
@@ -637,10 +642,10 @@
                                                         <div class="form-group row">
                                                             <div class="col-sm-10">
                                                                 <div class="text-center">
-                                                                    <img class="profile-user-img img-fluid img-circle"
+                                                                    <img class="profile-user-img imgfix img-fluid img-circle"
                                                                         id="uploadPreview"
                                                                         src="/drive/image/<%= image %>"
-                                                                        alt="User profile picture">
+                                                                        alt="User profile picture" style="height: 150px; width: 150px;">
                                                                     <p class="text-muted">
                                                                         <i class="fas fa-camera"></i>
                                                                         Upload a new picture
