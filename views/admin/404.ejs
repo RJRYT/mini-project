@@ -18,11 +18,11 @@
     <link rel="shortcut icon" href="/images/icon-logo.png" type="image/x-icon" />
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed"><!--layout-footer-fixed--> 
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed"><!--layout-footer-fixed-->
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links --> 
+            <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
@@ -42,9 +42,12 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <img src="/drive/image/<%= user.ProfilePic %>" class="user-image img-circle elevation-2" alt="User Image" style="height: 20px;">
-                        <span class="d-none d-md-inline"><%=name%></span>
-                      </a>
+                        <img src="/drive/image/<%= user.ProfilePic %>" class="user-image imgfix img-circle elevation-2"
+                            alt="User Image" style="height: 25px; width: 25px;">
+                        <span class="d-none d-md-inline">
+                            <%=name%>
+                        </span>
+                    </a>
                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                         <a href="/dashboard/profile" class="dropdown-item">
                             <i class="fas fa-user"></i> Profile
@@ -153,34 +156,34 @@
             <section class="content">
                 <div class="error-page">
                     <h2 class="headline text-warning"> 404</h2>
-            
+
                     <div class="error-content">
-                      <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Page not found.</h3>
-            
-                      <p>
-                        We could not find the page you were looking for.
-                        Meanwhile, you may <a href="/admin">return to dashboard</a> or try using the search form.
-                      </p>
-            
-                      <form class="search-form">
-                        <div class="input-group">
-                          <input type="text" name="search" class="form-control" placeholder="Search">
-            
-                          <div class="input-group-append">
-                            <button type="submit" name="submit" value="search" class="btn btn-warning"><i class="fas fa-search"></i>
-                            </button>
-                          </div>
-                        </div>
-                        <!-- /.input-group -->
-                      </form>
+                        <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Page not found.</h3>
+
+                        <p>
+                            We could not find the page you were looking for.
+                            Meanwhile, you may <a href="/admin">return to dashboard</a> or try using the search form.
+                        </p>
+
+                        <form class="search-form">
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control" placeholder="Search">
+
+                                <div class="input-group-append">
+                                    <button type="submit" name="submit" value="search" class="btn btn-warning"><i
+                                            class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.input-group -->
+                        </form>
                     </div>
                     <!-- /.error-content -->
-                  </div>
+                </div>
             </section>
-            <a id="back-to-top" href="#" class="btn btn-secondary back-to-top" role="button"
-                        aria-label="Scroll to top">
-                        <i class="fas fa-chevron-up"></i>
-                    </a>
+            <a id="back-to-top" href="#" class="btn btn-secondary back-to-top" role="button" aria-label="Scroll to top">
+                <i class="fas fa-chevron-up"></i>
+            </a>
         </div>
         <footer class="main-footer">
             <strong>Copyright &copy; 2023-2024 <a href="/">Supreme Lifecare</a>.</strong>

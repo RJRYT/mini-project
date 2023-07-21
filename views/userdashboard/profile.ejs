@@ -18,658 +18,690 @@
     <link rel="shortcut icon" href="/images/icon-logo.png" type="image/x-icon" />
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed"><!--layout-footer-fixed--> 
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed"><!--layout-footer-fixed-->
     <div class="wrapper">
         <!-- Preloader -->
         <% if(!dev){ %>
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__wobble" src="/images/icon-logo.png" alt="Dashboard Logo" height="60" width="60">
-        </div>
-        <% } %>
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="/" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
-                <%if(user.Admin){%>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a href="/admin" class="nav-link">Admin</a>
-                    </li>
-                    <%}%>
-            </ul>
-
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown"  style="display: none;">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <img src="/drive/image/<%= image %>" class="user-image img-circle elevation-2" alt="User Image" style="height: 20px;">
-                        <span class="d-none d-md-inline"><%=name%></span>
-                      </a>
-                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                        <a class="dropdown-item">
-                            <img src="/drive/image/<%= image %>" class="user-image img-circle elevation-2" alt="User Image" style="height: 20px;">
-                            <span class="d-none d-md-inline"><%=name%></span>
-                        </a>
-                        <hr>
-                        <a href="/dashboard/profile" class="dropdown-item  active">
-                            <i class="fas fa-user"></i> Profile
-                        </a>
+            <div class="preloader flex-column justify-content-center align-items-center">
+                <img class="animation__wobble" src="/images/icon-logo.png" alt="Dashboard Logo" height="60" width="60">
+            </div>
+            <% } %>
+                <!-- Navbar -->
+                <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+                    <!-- Left navbar links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                                    class="fas fa-bars"></i></a>
+                        </li>
+                        <li class="nav-item d-none d-sm-inline-block">
+                            <a href="/" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item d-none d-sm-inline-block">
+                            <a href="#" class="nav-link">Contact</a>
+                        </li>
                         <%if(user.Admin){%>
-                            <a href="/admin" class="dropdown-item">
-                                <i class="fas fa-user-shield"></i> Admin
-                            </a>
+                            <li class="nav-item d-none d-sm-inline-block">
+                                <a href="/admin" class="nav-link">Admin</a>
+                            </li>
                             <%}%>
-                        <a href="/dashboard/result" class="dropdown-item">
-                            <i class="fas fa-poll"></i> Result
-                        </a>
-                        <a href="/auth/logout" class="dropdown-item">
-                            <i class="fas fa-sign-out-alt"></i> Logout
-                        </a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-        <aside class="main-sidebar sidebar-light-lightblue elevation-4">
-            <!-- Brand Logo -->
-            <a href="/dashboard" class="brand-link">
-                <img src="/images/icon-logo.png" alt="Dashboard Logo" class="brand-image img-circle elevation-3"
-                    style="opacity: .8">
-                <span class="brand-text font-weight-light">Supreme Lifecare</span>
-            </a>
+                    </ul>
 
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img id="profilepic2" src="/drive/image/<%= image %>" class="img-circle elevation-2"
-                            alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block active">
-                            <%=name%>
-                        </a>
-                    </div>
-                </div>
-                <!-- SidebarSearch Form -->
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
-                        <li class="nav-item">
-                            <a href="/dashboard" class="nav-link">
-                                <i class="fas fa-home nav-icon"></i>
-                                <p>Home</p>
+                    <!-- Right navbar links -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Notifications Dropdown Menu -->
+                        <li class="nav-item dropdown" style="display: none;">
+                            <a class="nav-link" data-toggle="dropdown" href="#">
+                                <i class="far fa-bell"></i>
+                                <span class="badge badge-warning navbar-badge">15</span>
                             </a>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                <span class="dropdown-item dropdown-header">15 Notifications</span>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-envelope mr-2"></i> 4 new messages
+                                    <span class="float-right text-muted text-sm">3 mins</span>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-users mr-2"></i> 8 friend requests
+                                    <span class="float-right text-muted text-sm">12 hours</span>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-file mr-2"></i> 3 new reports
+                                    <span class="float-right text-muted text-sm">2 days</span>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                            </div>
                         </li>
                         <li class="nav-item">
-                            <a href="/dashboard/booking" class="nav-link">
-                                <i class="fas fa-calendar-check nav-icon"></i>
-                                <p>Appointment</p>
+                            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                                <i class="fas fa-expand-arrows-alt"></i>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/dashboard/result" class="nav-link">
-                                <i class="fas fa-poll nav-icon"></i>
-                                <p>Result</p>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <img src="/drive/image/<%= image %>" class="user-image imgfix img-circle elevation-2" alt="User Image"
+                            style="height: 25px; width: 25px;">
+                                <span class="d-none d-md-inline">
+                                    <%=name%>
+                                </span>
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-phone-alt"></i>
-                                <p>
-                                    Contact Us
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Customer Care</p>
+                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                <a class="dropdown-item">
+                                    <img src="/drive/image/<%= image %>" class="user-image imgfix img-circle elevation-2" alt="User Image"
+                            style="height: 25px; width: 25px;">
+                                    <span class="d-none d-md-inline">
+                                        <%=name%>
+                                    </span>
+                                </a>
+                                <hr>
+                                <a href="/dashboard/profile" class="dropdown-item  active">
+                                    <i class="fas fa-user"></i> Profile
+                                </a>
+                                <%if(user.Admin){%>
+                                    <a href="/admin" class="dropdown-item">
+                                        <i class="fas fa-user-shield"></i> Admin
                                     </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Request Call Back</p>
-                                    </a>
-                                </li>
-                            </ul>
-
+                                    <%}%>
+                                        <a href="/dashboard/result" class="dropdown-item">
+                                            <i class="fas fa-poll"></i> Result
+                                        </a>
+                                        <a href="/auth/logout" class="dropdown-item">
+                                            <i class="fas fa-sign-out-alt"></i> Logout
+                                        </a>
+                            </div>
                         </li>
                     </ul>
                 </nav>
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Profile</h1>
+                <aside class="main-sidebar sidebar-light-lightblue elevation-4">
+                    <!-- Brand Logo -->
+                    <a href="/dashboard" class="brand-link">
+                        <img src="/images/icon-logo.png" alt="Dashboard Logo" class="brand-image img-circle elevation-3"
+                            style="opacity: .8">
+                        <span class="brand-text font-weight-light">Supreme Lifecare</span>
+                    </a>
+
+                    <!-- Sidebar -->
+                    <div class="sidebar">
+                        <!-- Sidebar user panel (optional) -->
+                        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                            <div class="image">
+                                <img src="/drive/image/<%= image %>" class="img-circle imgfix elevation-2" alt="User Image" style="height: 30px; width: 30px;">
+                            </div>
+                            <div class="info">
+                                <a href="#" class="d-block active">
+                                    <%=name%>
+                                </a>
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-                                <li class="breadcrumb-item active">User Profile</li>
-                            </ol>
-                        </div>
-                    </div>
-                    <% if (!user.Setuped) { %>
-                        <div class="row mb-2">
-                            <div class="col">
-                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                    <strong>Warning </strong> You didn't complete your profile.
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
+                        <!-- SidebarSearch Form -->
+                        <div class="form-inline">
+                            <div class="input-group" data-widget="sidebar-search">
+                                <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                                    aria-label="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-sidebar">
+                                        <i class="fas fa-search fa-fw"></i>
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <% } %>
-                </div><!-- /.container-fluid -->
-            </section>
+                        <!-- Sidebar Menu -->
+                        <nav class="mt-2">
+                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                                data-accordion="false">
+                                <li class="nav-item">
+                                    <a href="/dashboard" class="nav-link">
+                                        <i class="fas fa-home nav-icon"></i>
+                                        <p>Home</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/dashboard/booking" class="nav-link">
+                                        <i class="fas fa-calendar-check nav-icon"></i>
+                                        <p>Appointment</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/dashboard/result" class="nav-link">
+                                        <i class="fas fa-poll nav-icon"></i>
+                                        <p>Result</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-phone-alt"></i>
+                                        <p>
+                                            Contact Us
+                                            <i class="right fas fa-angle-left"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Customer Care</p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Request Call Back</p>
+                                            </a>
+                                        </li>
+                                    </ul>
 
-            <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-3">
-
-                            <!-- Profile Image -->
-                            <div class="card card-primary card-outline">
-                                <div class="card-body box-profile">
-                                    <div class="text-center">
-                                        <img id="profilepic1" class="profile-user-img img-fluid img-circle"
-                                            src="/drive/image/<%= image %>" alt="User profile picture">
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- /.sidebar-menu -->
+                    </div>
+                    <!-- /.sidebar -->
+                </aside>
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <div class="container-fluid">
+                            <div class="row mb-2">
+                                <div class="col-sm-6">
+                                    <h1>Profile</h1>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ol class="breadcrumb float-sm-right">
+                                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                                        <li class="breadcrumb-item active">User Profile</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <% if (!user.Setuped) { %>
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                            <strong>Warning </strong> You didn't complete your profile.
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
                                     </div>
-
-                                    <h3 class="profile-username text-center">
-                                        <%=name%>
-                                    </h3>
-
-                                    <ul class="list-group list-group-unbordered mb-3">
-                                        <li class="list-group-item">
-                                            <b>Appoinments</b> <a class="float-right">5</a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Pending Result</b> <a class="float-right">5</a>
-                                        </li>
-                                    </ul>
                                 </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
+                                <% } %>
+                        </div><!-- /.container-fluid -->
+                    </section>
 
-                            <!-- About Me Box -->
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title">About Me</h3>
+                    <!-- Main content -->
+                    <section class="content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-3">
+
+                                    <!-- Profile Image -->
+                                    <div class="card card-primary card-outline">
+                                        <div class="card-body box-profile">
+                                            <div class="text-center">
+                                                <img id="profilepic1" class="profile-user-img img-fluid img-circle"
+                                                    src="/drive/image/<%= image %>" alt="User profile picture">
+                                            </div>
+
+                                            <h3 class="profile-username text-center">
+                                                <%=name%>
+                                            </h3>
+
+                                            <ul class="list-group list-group-unbordered mb-3">
+                                                <li class="list-group-item">
+                                                    <b>Appoinments</b> <a class="float-right">5</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <b>Pending Result</b> <a class="float-right">5</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+
+                                    <!-- About Me Box -->
+                                    <div class="card card-primary">
+                                        <div class="card-header">
+                                            <h3 class="card-title">About Me</h3>
+                                        </div>
+                                        <!-- /.card-header -->
+                                        <div class="card-body">
+                                            <strong><i class="fas fa-angle-right mr-1"></i> Name</strong>
+
+                                            <p class="text-muted">
+                                                <%=user.FirstName%>
+                                            </p>
+                                            <strong><i class="fas fa-angle-right mr-1"></i> Email</strong>
+
+                                            <p class="text-muted">
+                                                <%=user.Email%>
+                                            </p>
+                                            <strong><i class="fas fa-angle-right mr-1"></i> Phone Number</strong>
+
+                                            <p class="text-muted">
+                                                <%=user.Number || "-" %>
+                                            </p>
+                                            <strong><i class="fas fa-angle-right mr-1"></i> Address</strong>
+
+                                            <p class="text-muted">
+                                                <%=user.Address || "-" %>
+                                            </p>
+                                            <strong><i class="fas fa-angle-right mr-1"></i> Date of birth</strong>
+
+                                            <p class="text-muted">
+                                                <%=user.Dob || "-" %>
+                                            </p>
+                                            <strong><i class="fas fa-angle-right mr-1"></i> Age</strong>
+
+                                            <p class="text-muted">
+                                                <%=user.Age || "-" %>
+                                            </p>
+                                            <strong><i class="fas fa-angle-right mr-1"></i> Gender</strong>
+
+                                            <p class="text-muted">
+                                                <%=user.Gender || "-" %>
+                                            </p>
+                                            <strong><i class="fas fa-angle-right mr-1"></i> Blood Group</strong>
+
+                                            <p class="text-muted">
+                                                <%=user.Blood || "-" %>
+                                            </p>
+                                            <strong><i class="fas fa-angle-right mr-1"></i> Body weight</strong>
+
+                                            <p class="text-muted">
+                                                <%=user.Weight || "-" %> Kg
+                                            </p>
+                                            <strong><i class="fas fa-angle-right mr-1"></i> Body height</strong>
+
+                                            <p class="text-muted">
+                                                <%=user.Height || "-" %> Cm
+                                            </p>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
                                 </div>
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <strong><i class="fas fa-angle-right mr-1"></i> Name</strong>
-
-                                    <p class="text-muted">
-                                        <%=user.FirstName%>
-                                    </p>
-                                    <strong><i class="fas fa-angle-right mr-1"></i> Email</strong>
-
-                                    <p class="text-muted">
-                                        <%=user.Email%>
-                                    </p>
-                                    <strong><i class="fas fa-angle-right mr-1"></i> Phone Number</strong>
-
-                                    <p class="text-muted">
-                                        <%=user.Number || "-" %>
-                                    </p>
-                                    <strong><i class="fas fa-angle-right mr-1"></i> Address</strong>
-
-                                    <p class="text-muted">
-                                        <%=user.Address || "-" %>
-                                    </p>
-                                    <strong><i class="fas fa-angle-right mr-1"></i> Date of birth</strong>
-
-                                    <p class="text-muted">
-                                        <%=user.Dob || "-" %>
-                                    </p>
-                                    <strong><i class="fas fa-angle-right mr-1"></i> Age</strong>
-
-                                    <p class="text-muted">
-                                        <%=user.Age || "-" %>
-                                    </p>
-                                    <strong><i class="fas fa-angle-right mr-1"></i> Gender</strong>
-
-                                    <p class="text-muted">
-                                        <%=user.Gender || "-" %>
-                                    </p>
-                                    <strong><i class="fas fa-angle-right mr-1"></i> Blood Group</strong>
-
-                                    <p class="text-muted">
-                                        <%=user.Blood || "-" %>
-                                    </p>
-                                    <strong><i class="fas fa-angle-right mr-1"></i> Body weight</strong>
-
-                                    <p class="text-muted">
-                                        <%=user.Weight || "-" %> Kg
-                                    </p>
-                                    <strong><i class="fas fa-angle-right mr-1"></i> Body height</strong>
-
-                                    <p class="text-muted">
-                                        <%=user.Height || "-" %> Cm
-                                    </p>
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-md-9">
-                            <div class="card">
-                                <div class="card-header p-2">
-                                    <ul class="nav nav-pills">
-                                        <li class="nav-item"><a class="nav-link active" href="#updateprofile"
-                                                data-toggle="tab">Update Profile</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="#changename"
-                                                data-toggle="tab">Change Name</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="#changeemail"
-                                                data-toggle="tab">Change Email</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="#changepass"
-                                                data-toggle="tab">Change Password</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="#changepic"
-                                                data-toggle="tab">Change Profile Pic</a></li>
-                                    </ul>
-                                </div><!-- /.card-header -->
-                                <div class="card-body">
-                                    <div class="tab-content">
-                                        <div class="active tab-pane" id="updateprofile">
-                                            <form class="form-horizontal" id="formUpdateProfile">
-                                                <div class="form-group row">
-                                                    <label for="inputName" class="col-sm-2 col-form-label">Name <span
-                                                            class="badge badge-danger">*</span></label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="inputName"
-                                                            placeholder="Name" disabled value="<%=name%>">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="inputEmail" class="col-sm-2 col-form-label">Email <span
-                                                            class="badge badge-danger">*</span></label>
-                                                    <div class="col-sm-10">
-                                                        <input type="email" class="form-control" id="inputEmail"
-                                                            placeholder="Email" disabled value="<%=user.Email%>">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="PhNumber" class="col-sm-2 col-form-label">Phone Number
-                                                        <span class="badge badge-danger">*</span></label>
-                                                    <div class="col-sm-10">
-                                                        <input type="tel" class="form-control" id="PhNumber"
-                                                            placeholder="Phone Number" required
-                                                            value="<%=user.Number%>">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="Address" class="col-sm-2 col-form-label">Address</label>
-                                                    <div class="col-sm-10">
-                                                        <textarea class="form-control" id="Address"
-                                                            placeholder="Address"><%=user.Address%></textarea>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="form-group row">
-                                                    <label for="gender" class="col-sm-2 col-form-label">Gender <span
-                                                            class="badge badge-danger">*</span></label>
-                                                    <div class="col-sm-10">
-                                                        <select name="gender" class="form-control"
-                                                            title="Select your gender" id="gender" required>
-                                                            <option value="">Select Gender</option>
-                                                            <% if (user.Gender=='male' ) { %>
-                                                                <option value="male" selected>male</option>
-                                                                <option value="female">female</option>
-                                                                <% } else if (user.Gender=='female' ) { %>
-                                                                    <option value="female" selected>female</option>
-                                                                    <option value="male">male</option>
-                                                                    <% } else { %>
-                                                                        <option value="female">female</option>
-                                                                        <option value="male">male</option>
-                                                                        <% } %>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="dateofbirth" class="col-sm-2 col-form-label">Date of
-                                                        birth<span class="badge badge-danger">*</span></label>
-                                                    <div class="col-sm-10">
-                                                        <input type="date" class="form-control" id="dateofbirth"
-                                                            placeholder="Date of birth" required value="<%=user.Dob%>">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="age" class="col-sm-2 col-form-label">Age <span
-                                                            class="badge badge-danger">*</span></label>
-                                                    <div class="col-sm-10">
-                                                        <input type="number" class="form-control" id="age"
-                                                            placeholder="Your age" disabled required
-                                                            value="<%=user.Age%>">
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="form-group row">
-                                                    <label for="blood" class="col-sm-2 col-form-label">Blood
-                                                        Group</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="blood"
-                                                            placeholder="Blood Group" value="<%=user.Blood%>">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="height" class="col-sm-2 col-form-label">Body
-                                                        Height</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="number" class="form-control" id="height"
-                                                            placeholder="Body Height" value="<%=user.Height%>">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="weight" class="col-sm-2 col-form-label">Body
-                                                        Weight</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="number" class="form-control" id="weight"
-                                                            placeholder="Body Weight" value="<%=user.Weight%>">
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="form-group row">
-                                                    <label for="updateppass" class="col-sm-2 col-form-label">Password
-                                                        <span class="badge badge-danger">*</span></label>
-                                                    <div class="col-sm-10">
-                                                        <i class="far fa-eye" id="updateprofilePass"
-                                                            style="float: right; cursor: pointer;"
-                                                            onclick="ChangePassView('updateprofilePass','updateppass')"></i>
-                                                        <input type="password" class="form-control" id="updateppass"
-                                                            placeholder="Password" required>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="offset-sm-2 col-sm-10">
-                                                        <button type="submit" class="btn btn-secondary"
-                                                            id="updateProfileSubmit">Update profile</button>
-                                                    </div>
-                                                    <div class="col-sm-10">
-                                                        <hr><label class="col-form-label">Note: Required fields are
-                                                            marked with <span
-                                                                class="badge badge-danger">*</span></label>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="tab-pane" id="changename">
-                                            <form class="form-horizontal" id="formChangeName">
-                                                <div class="form-group row">
-                                                    <label for="cname" class="col-sm-2 col-form-label">Current
-                                                        Name</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="cname"
-                                                            placeholder="Current Name" autocomplete="off" required>
-                                                        <input type="text" hidden id="urCurrentName" value="<%=name%>">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="newname" class="col-sm-2 col-form-label">New
-                                                        Name</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="newname"
-                                                            placeholder="New Name" autocomplete="off"
-                                                            pattern="[A-Za-z0-9]{3,15}"
-                                                            title="Enter a valid Name. No space allowed, No special characters allowed. Max 3-15 characters"
-                                                            required>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="cnewname" class="col-sm-2 col-form-label">Confirm
-                                                        Name</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="cnewname"
-                                                            placeholder="Confirm New Name" autocomplete="off" required>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="form-group row">
-                                                    <label for="namechangepass"
-                                                        class="col-sm-2 col-form-label">Password</label>
-                                                    <div class="col-sm-10">
-                                                        <i class="far fa-eye" id="namechangepasstoggle"
-                                                            style="float: right; cursor: pointer;"
-                                                            onclick="ChangePassView('namechangepasstoggle','namechangepass')"></i>
-                                                        <input type="password" class="form-control" id="namechangepass"
-                                                            placeholder="Password" autocomplete="off" required>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="offset-sm-2 col-sm-10">
-                                                        <button type="submit" class="btn btn-secondary"
-                                                            id="changeNameSubmit">Change Name</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="tab-pane" id="changeemail">
-                                            <form class="form-horizontal" id="formChangeEmail">
-                                                <div class="form-group row">
-                                                    <label for="cemail" class="col-sm-2 col-form-label">Current
-                                                        Email</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="email" class="form-control" id="cemail"
-                                                            placeholder="Current Email" autocomplete="off" required>
-                                                        <input type="email" hidden id="urCurrentEmail"
-                                                            value="<%=user.Email%>">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="newemail" class="col-sm-2 col-form-label">New
-                                                        Email</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="email" class="form-control" id="newemail"
-                                                            placeholder="New Email" autocomplete="off" required>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="cnewemail" class="col-sm-2 col-form-label">Confirm
-                                                        Email</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="email" class="form-control" id="cnewemail"
-                                                            placeholder="Confirm Email" autocomplete="off" required>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="form-group row">
-                                                    <label for="emailchangepass"
-                                                        class="col-sm-2 col-form-label">Password</label>
-                                                    <div class="col-sm-10">
-                                                        <i class="far fa-eye" id="emailchangepasstogg"
-                                                            style="float: right; cursor: pointer;"
-                                                            onclick="ChangePassView('emailchangepasstogg','emailchangepass')"></i>
-                                                        <input type="password" class="form-control" id="emailchangepass"
-                                                            placeholder="Password" autocomplete="off" required>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="offset-sm-2 col-sm-10">
-                                                        <button type="submit" class="btn btn-secondary"
-                                                            id="changeEmailSubmit">Change Email</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="tab-pane" id="changepass">
-                                            <form class="form-horizontal" id="formChangePass">
-                                                <div class="form-group row">
-                                                    <label for="cpass" class="col-sm-2 col-form-label">Current
-                                                        Password</label>
-                                                    <div class="col-sm-10">
-                                                        <i class="far fa-eye" id="togglePassword1"
-                                                            style="float: right; cursor: pointer;"
-                                                            onclick="ChangePassView('togglePassword1','cpass')"></i>
-                                                        <input type="password" class="form-control" id="cpass"
-                                                            placeholder="Current Password" autocomplete="off" required>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="newpass" class="col-sm-2 col-form-label">New
-                                                        Password</label>
-                                                    <div class="col-sm-10">
-                                                        <i class="far fa-eye" id="togglePassword2"
-                                                            style="float: right; cursor: pointer;"
-                                                            onclick="ChangePassView('togglePassword2','newpass')"></i>
-                                                        <input type="password" class="form-control" id="newpass"
-                                                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                                                            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                                                            placeholder="New Password" autocomplete="off" required>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="cnewpass" class="col-sm-2 col-form-label">Confirm
-                                                        Password</label>
-                                                    <div class="col-sm-10">
-                                                        <i class="far fa-eye" id="togglePassword3"
-                                                            style="float: right; cursor: pointer;"
-                                                            onclick="ChangePassView('togglePassword3','cnewpass')"></i>
-                                                        <input type="password" class="form-control" id="cnewpass"
-                                                            placeholder="Confirm Password" autocomplete="off" required>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="offset-sm-2 col-sm-10">
-                                                        <button type="submit" class="btn btn-secondary"
-                                                            id="changePassSubmit">Change Password</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="tab-pane" id="changepic">
-                                            <form class="form-horizontal" id="formChangePic"
-                                                enctype="multipart/form-data">
-                                                <div class="form-group row">
-                                                    <div class="col-sm-10">
-                                                        <div class="text-center">
-                                                            <img class="profile-user-img img-fluid img-circle"
-                                                                id="uploadPreview" src="/drive/image/<%= image %>"
-                                                                alt="User profile picture">
-                                                            <p class="text-muted">
-                                                                <i class="fas fa-camera"></i>
-                                                                Upload a new picture
-                                                            </p>
-                                                            <p class="text-muted" id="picDetails"></p>
-                                                            <p class="text-muted" id="UploadStatus"></p>
-                                                            <div id="progress-bar" class="progress-bar">
-                                                                <div id="progress"></div>
+                                <!-- /.col -->
+                                <div class="col-md-9">
+                                    <div class="card">
+                                        <div class="card-header p-2">
+                                            <ul class="nav nav-pills">
+                                                <li class="nav-item"><a class="nav-link active" href="#updateprofile"
+                                                        data-toggle="tab">Update Profile</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="#changename"
+                                                        data-toggle="tab">Change Name</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="#changeemail"
+                                                        data-toggle="tab">Change Email</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="#changepass"
+                                                        data-toggle="tab">Change Password</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="#changepic"
+                                                        data-toggle="tab">Change Profile Pic</a></li>
+                                            </ul>
+                                        </div><!-- /.card-header -->
+                                        <div class="card-body">
+                                            <div class="tab-content">
+                                                <div class="active tab-pane" id="updateprofile">
+                                                    <form class="form-horizontal" id="formUpdateProfile">
+                                                        <div class="form-group row">
+                                                            <label for="inputName" class="col-sm-2 col-form-label">Name
+                                                                <span class="badge badge-danger">*</span></label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" id="inputName"
+                                                                    placeholder="Name" disabled value="<%=name%>">
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-10">
-                                                        <div class="custom-file">
-                                                            <input type="file" class="custom-file-input" name="pic"
-                                                                accept="image/*" id="uploadProfilePic"
-                                                                onchange="PreviewProfilePic();" required>
-                                                            <label class="custom-file-label" for="uploadProfilePic"
-                                                                id="picDetails2">Choose file</label>
+                                                        <div class="form-group row">
+                                                            <label for="inputEmail"
+                                                                class="col-sm-2 col-form-label">Email <span
+                                                                    class="badge badge-danger">*</span></label>
+                                                            <div class="col-sm-10">
+                                                                <input type="email" class="form-control" id="inputEmail"
+                                                                    placeholder="Email" disabled
+                                                                    value="<%=user.Email%>">
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                        <div class="form-group row">
+                                                            <label for="PhNumber" class="col-sm-2 col-form-label">Phone
+                                                                Number
+                                                                <span class="badge badge-danger">*</span></label>
+                                                            <div class="col-sm-10">
+                                                                <input type="tel" class="form-control" id="PhNumber"
+                                                                    placeholder="Phone Number" required
+                                                                    value="<%=user.Number%>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="Address"
+                                                                class="col-sm-2 col-form-label">Address</label>
+                                                            <div class="col-sm-10">
+                                                                <textarea class="form-control" id="Address"
+                                                                    placeholder="Address"><%=user.Address%></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                        <div class="form-group row">
+                                                            <label for="gender" class="col-sm-2 col-form-label">Gender
+                                                                <span class="badge badge-danger">*</span></label>
+                                                            <div class="col-sm-10">
+                                                                <select name="gender" class="form-control"
+                                                                    title="Select your gender" id="gender" required>
+                                                                    <option value="">Select Gender</option>
+                                                                    <% if (user.Gender=='male' ) { %>
+                                                                        <option value="male" selected>male</option>
+                                                                        <option value="female">female</option>
+                                                                        <% } else if (user.Gender=='female' ) { %>
+                                                                            <option value="female" selected>female
+                                                                            </option>
+                                                                            <option value="male">male</option>
+                                                                            <% } else { %>
+                                                                                <option value="female">female</option>
+                                                                                <option value="male">male</option>
+                                                                                <% } %>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="dateofbirth"
+                                                                class="col-sm-2 col-form-label">Date of
+                                                                birth<span class="badge badge-danger">*</span></label>
+                                                            <div class="col-sm-10">
+                                                                <input type="date" class="form-control" id="dateofbirth"
+                                                                    placeholder="Date of birth" required
+                                                                    value="<%=user.Dob%>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="age" class="col-sm-2 col-form-label">Age <span
+                                                                    class="badge badge-danger">*</span></label>
+                                                            <div class="col-sm-10">
+                                                                <input type="number" class="form-control" id="age"
+                                                                    placeholder="Your age" disabled required
+                                                                    value="<%=user.Age%>">
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                        <div class="form-group row">
+                                                            <label for="blood" class="col-sm-2 col-form-label">Blood
+                                                                Group</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" id="blood"
+                                                                    placeholder="Blood Group" value="<%=user.Blood%>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="height" class="col-sm-2 col-form-label">Body
+                                                                Height</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="number" class="form-control" id="height"
+                                                                    placeholder="Body Height" value="<%=user.Height%>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="weight" class="col-sm-2 col-form-label">Body
+                                                                Weight</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="number" class="form-control" id="weight"
+                                                                    placeholder="Body Weight" value="<%=user.Weight%>">
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                        <div class="form-group row">
+                                                            <label for="updateppass"
+                                                                class="col-sm-2 col-form-label">Password
+                                                                <span class="badge badge-danger">*</span></label>
+                                                            <div class="col-sm-10">
+                                                                <i class="far fa-eye" id="updateprofilePass"
+                                                                    style="float: right; cursor: pointer;"
+                                                                    onclick="ChangePassView('updateprofilePass','updateppass')"></i>
+                                                                <input type="password" class="form-control"
+                                                                    id="updateppass" placeholder="Password" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="offset-sm-2 col-sm-10">
+                                                                <button type="submit" class="btn btn-secondary"
+                                                                    id="updateProfileSubmit">Update profile</button>
+                                                            </div>
+                                                            <div class="col-sm-10">
+                                                                <hr><label class="col-form-label">Note: Required fields
+                                                                    are
+                                                                    marked with <span
+                                                                        class="badge badge-danger">*</span></label>
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <div class="offset-sm-2 col-sm-10">
-                                                        <button type="submit" class="btn btn-secondary"
-                                                            id="changeprofilepic">Change Profile Pic</button>
-                                                        <button type="button" class="btn btn-danger"
-                                                            id="resetprofilepic"><i class="fas fa-trash"></i></button>
-                                                    </div>
+                                                <div class="tab-pane" id="changename">
+                                                    <form class="form-horizontal" id="formChangeName">
+                                                        <div class="form-group row">
+                                                            <label for="cname" class="col-sm-2 col-form-label">Current
+                                                                Name</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" id="cname"
+                                                                    placeholder="Current Name" autocomplete="off"
+                                                                    required>
+                                                                <input type="text" hidden id="urCurrentName"
+                                                                    value="<%=name%>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="newname" class="col-sm-2 col-form-label">New
+                                                                Name</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" id="newname"
+                                                                    placeholder="New Name" autocomplete="off"
+                                                                    pattern="[A-Za-z0-9]{3,15}"
+                                                                    title="Enter a valid Name. No space allowed, No special characters allowed. Max 3-15 characters"
+                                                                    required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="cnewname"
+                                                                class="col-sm-2 col-form-label">Confirm
+                                                                Name</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" id="cnewname"
+                                                                    placeholder="Confirm New Name" autocomplete="off"
+                                                                    required>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                        <div class="form-group row">
+                                                            <label for="namechangepass"
+                                                                class="col-sm-2 col-form-label">Password</label>
+                                                            <div class="col-sm-10">
+                                                                <i class="far fa-eye" id="namechangepasstoggle"
+                                                                    style="float: right; cursor: pointer;"
+                                                                    onclick="ChangePassView('namechangepasstoggle','namechangepass')"></i>
+                                                                <input type="password" class="form-control"
+                                                                    id="namechangepass" placeholder="Password"
+                                                                    autocomplete="off" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="offset-sm-2 col-sm-10">
+                                                                <button type="submit" class="btn btn-secondary"
+                                                                    id="changeNameSubmit">Change Name</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                            </form>
-                                        </div>
-                                        <!-- /.tab-pane -->
+                                                <div class="tab-pane" id="changeemail">
+                                                    <form class="form-horizontal" id="formChangeEmail">
+                                                        <div class="form-group row">
+                                                            <label for="cemail" class="col-sm-2 col-form-label">Current
+                                                                Email</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="email" class="form-control" id="cemail"
+                                                                    placeholder="Current Email" autocomplete="off"
+                                                                    required>
+                                                                <input type="email" hidden id="urCurrentEmail"
+                                                                    value="<%=user.Email%>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="newemail" class="col-sm-2 col-form-label">New
+                                                                Email</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="email" class="form-control" id="newemail"
+                                                                    placeholder="New Email" autocomplete="off" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="cnewemail"
+                                                                class="col-sm-2 col-form-label">Confirm
+                                                                Email</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="email" class="form-control" id="cnewemail"
+                                                                    placeholder="Confirm Email" autocomplete="off"
+                                                                    required>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                        <div class="form-group row">
+                                                            <label for="emailchangepass"
+                                                                class="col-sm-2 col-form-label">Password</label>
+                                                            <div class="col-sm-10">
+                                                                <i class="far fa-eye" id="emailchangepasstogg"
+                                                                    style="float: right; cursor: pointer;"
+                                                                    onclick="ChangePassView('emailchangepasstogg','emailchangepass')"></i>
+                                                                <input type="password" class="form-control"
+                                                                    id="emailchangepass" placeholder="Password"
+                                                                    autocomplete="off" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="offset-sm-2 col-sm-10">
+                                                                <button type="submit" class="btn btn-secondary"
+                                                                    id="changeEmailSubmit">Change Email</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="tab-pane" id="changepass">
+                                                    <form class="form-horizontal" id="formChangePass">
+                                                        <div class="form-group row">
+                                                            <label for="cpass" class="col-sm-2 col-form-label">Current
+                                                                Password</label>
+                                                            <div class="col-sm-10">
+                                                                <i class="far fa-eye" id="togglePassword1"
+                                                                    style="float: right; cursor: pointer;"
+                                                                    onclick="ChangePassView('togglePassword1','cpass')"></i>
+                                                                <input type="password" class="form-control" id="cpass"
+                                                                    placeholder="Current Password" autocomplete="off"
+                                                                    required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="newpass" class="col-sm-2 col-form-label">New
+                                                                Password</label>
+                                                            <div class="col-sm-10">
+                                                                <i class="far fa-eye" id="togglePassword2"
+                                                                    style="float: right; cursor: pointer;"
+                                                                    onclick="ChangePassView('togglePassword2','newpass')"></i>
+                                                                <input type="password" class="form-control" id="newpass"
+                                                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                                                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                                                                    placeholder="New Password" autocomplete="off"
+                                                                    required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="cnewpass"
+                                                                class="col-sm-2 col-form-label">Confirm
+                                                                Password</label>
+                                                            <div class="col-sm-10">
+                                                                <i class="far fa-eye" id="togglePassword3"
+                                                                    style="float: right; cursor: pointer;"
+                                                                    onclick="ChangePassView('togglePassword3','cnewpass')"></i>
+                                                                <input type="password" class="form-control"
+                                                                    id="cnewpass" placeholder="Confirm Password"
+                                                                    autocomplete="off" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="offset-sm-2 col-sm-10">
+                                                                <button type="submit" class="btn btn-secondary"
+                                                                    id="changePassSubmit">Change Password</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="tab-pane" id="changepic">
+                                                    <form class="form-horizontal" id="formChangePic"
+                                                        enctype="multipart/form-data">
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-10">
+                                                                <div class="text-center">
+                                                                    <img class="profile-user-img img-fluid img-circle"
+                                                                        id="uploadPreview"
+                                                                        src="/drive/image/<%= image %>"
+                                                                        alt="User profile picture">
+                                                                    <p class="text-muted">
+                                                                        <i class="fas fa-camera"></i>
+                                                                        Upload a new picture
+                                                                    </p>
+                                                                    <p class="text-muted" id="picDetails"></p>
+                                                                    <p class="text-muted" id="UploadStatus"></p>
+                                                                    <div id="progress-bar" class="progress-bar">
+                                                                        <div id="progress"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-10">
+                                                                <div class="custom-file">
+                                                                    <input type="file" class="custom-file-input"
+                                                                        name="pic" accept="image/*"
+                                                                        id="uploadProfilePic"
+                                                                        onchange="PreviewProfilePic();" required>
+                                                                    <label class="custom-file-label"
+                                                                        for="uploadProfilePic" id="picDetails2">Choose
+                                                                        file</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="offset-sm-2 col-sm-10">
+                                                                <button type="submit" class="btn btn-secondary"
+                                                                    id="changeprofilepic">Change Profile Pic</button>
+                                                                <button type="button" class="btn btn-danger"
+                                                                    id="resetprofilepic"><i
+                                                                        class="fas fa-trash"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!-- /.tab-pane -->
+                                            </div>
+                                            <!-- /.tab-content -->
+                                        </div><!-- /.card-body -->
                                     </div>
-                                    <!-- /.tab-content -->
-                                </div><!-- /.card-body -->
+                                    <!-- /.card -->
+                                </div>
+                                <!-- /.col -->
                             </div>
-                            <!-- /.card -->
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
-            <a id="back-to-top" href="#" class="btn btn-secondary back-to-top" role="button"
+                            <!-- /.row -->
+                        </div><!-- /.container-fluid -->
+                    </section>
+                    <!-- /.content -->
+                    <a id="back-to-top" href="#" class="btn btn-secondary back-to-top" role="button"
                         aria-label="Scroll to top">
                         <i class="fas fa-chevron-up"></i>
                     </a>
-        </div>
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2023-2024 <a href="/">Supreme Lifecare</a>.</strong>
-            All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 1.0 (beta)
-            </div>
-        </footer>
+                </div>
+                <footer class="main-footer">
+                    <strong>Copyright &copy; 2023-2024 <a href="/">Supreme Lifecare</a>.</strong>
+                    All rights reserved.
+                    <div class="float-right d-none d-sm-inline-block">
+                        <b>Version</b> 1.0 (beta)
+                    </div>
+                </footer>
     </div>
 
     <script src="/dashboard/plugins/jquery/jquery.min.js"></script>
