@@ -46,6 +46,11 @@
                                 <a href="/admin" class="nav-link">Admin</a>
                             </li>
                             <%}%>
+                            <%if(user.Staff){%>
+                                <li class="nav-item d-none d-sm-inline-block">
+                                    <a href="/office" class="nav-link">Office Area</a>
+                                </li>
+                                <%}%>
                     </ul>
 
                     <!-- Right navbar links -->
@@ -107,6 +112,11 @@
                                         <i class="fas fa-user-shield"></i> Admin
                                     </a>
                                     <%}%>
+                                    <%if(user.Staff){%>
+                                        <a href="/admin" class="dropdown-item">
+                                            <i class="fas fa-user-nurse"></i> Office
+                                        </a>
+                                        <%}%>
                                         <a href="/dashboard/result" class="dropdown-item">
                                             <i class="fas fa-poll"></i> Result
                                         </a>

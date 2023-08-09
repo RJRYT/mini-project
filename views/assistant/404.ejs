@@ -31,90 +31,33 @@
                     <a href="/" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
+                    <a href="/dashboard/profile" class="nav-link">Profile</a>
                 </li>
-                <%if(user.Admin){%>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a href="/admin" class="nav-link">Admin</a>
-                    </li>
-                    <%}%>
-                    <%if(user.Staff){%>
-                        <li class="nav-item d-none d-sm-inline-block">
-                            <a href="/office" class="nav-link">Office Area</a>
-                        </li>
-                        <%}%>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/dashboard" class="nav-link">User area</a>
+                </li>
             </ul>
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown" style="display: none;">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </a>
-                </li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <img src="/drive/image/<%= image %>" class="user-image imgfix img-circle elevation-2" alt="User Image"
-                            style="height: 25px; width: 25px;">
+                        <img src="/drive/image/<%= user.ProfilePic %>" class="user-image imgfix img-circle elevation-2"
+                            alt="User Image" style="height: 25px; width: 25px;">
                         <span class="d-none d-md-inline">
                             <%=name%>
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                        <a class="dropdown-item">
-                            <img src="/drive/image/<%= image %>" class="user-image imgfix img-circle elevation-2" alt="User Image"
-                            style="height: 25px; width: 25px;">
-                            <span class="d-none d-md-inline">
-                                <%=name%>
-                            </span>
-                        </a>
-                        <hr>
                         <a href="/dashboard/profile" class="dropdown-item">
                             <i class="fas fa-user"></i> Profile
                         </a>
-                        <%if(user.Admin){%>
-                            <a href="/admin" class="dropdown-item">
-                                <i class="fas fa-user-shield"></i> Admin
-                            </a>
-                            <%}%>
-                            <%if(user.Staff){%>
-                                <a href="/admin" class="dropdown-item">
-                                    <i class="fas fa-user-nurse"></i> Office
-                                </a>
-                                <%}%>
-                                <a href="/dashboard/result" class="dropdown-item">
-                                    <i class="fas fa-poll"></i> Result
-                                </a>
-                                <a href="/auth/logout" class="dropdown-item">
-                                    <i class="fas fa-sign-out-alt"></i> Logout
-                                </a>
+                        <a href="/dashboard/result" class="dropdown-item">
+                            <i class="fas fa-poll"></i> Result
+                        </a>
+                        <a href="/auth/logout" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
                     </div>
                 </li>
             </ul>
@@ -129,18 +72,8 @@
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="/drive/image/<%= image %>" class="img-circle imgfix elevation-2" alt="User Image" style="height: 30px; width: 30px;">                    </div>
-                    <div class="info">
-                        <a href="/dashboard/profile" class="d-block">
-                            <%=name%>
-                        </a>
-                    </div>
-                </div>
                 <!-- SidebarSearch Form -->
-                <div class="form-inline">
+                <div class="form-inline mt-3">
                     <div class="input-group" data-widget="sidebar-search">
                         <input class="form-control form-control-sidebar" type="search" placeholder="Search"
                             aria-label="Search">
@@ -156,46 +89,22 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
-                            <a href="/dashboard/" class="nav-link">
+                            <a href="/office" class="nav-link">
                                 <i class="fas fa-home nav-icon"></i>
                                 <p>Home</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/dashboard/booking" class="nav-link">
+                            <a href="/office/appoinments" class="nav-link">
                                 <i class="fas fa-calendar-check nav-icon"></i>
-                                <p>Appointment</p>
+                                <p>Appoinments</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/dashboard/result" class="nav-link">
+                            <a href="/office/results" class="nav-link">
                                 <i class="fas fa-poll nav-icon"></i>
-                                <p>Result</p>
+                                <p>Results</p>
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-phone-alt"></i>
-                                <p>
-                                    Contact Us
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Customer Care</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Request Call Back</p>
-                                    </a>
-                                </li>
-                            </ul>
-
                         </li>
                     </ul>
                 </nav>
@@ -213,7 +122,7 @@
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/office">Home</a></li>
                                 <li class="breadcrumb-item active">Supreme Lifecare</li>
                             </ol>
                         </div><!-- /.col -->
@@ -229,8 +138,7 @@
 
                         <p>
                             We could not find the page you were looking for.
-                            Meanwhile, you may <a href="/dashboard">return to dashboard</a> or try using the search
-                            form.
+                            Meanwhile, you may <a href="/admin">return to dashboard</a> or try using the search form.
                         </p>
 
                         <form class="search-form">

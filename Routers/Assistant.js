@@ -1,6 +1,9 @@
 const express = require('express');
 router = express.Router();
 
+const AppStats = require('../DbModel/stats');
+
+
 router.use(function (req, res, next) {
     res.appendHeader("Cache-Control", "public, max-age=300");
     res.appendHeader("Pragma", "cache");
@@ -8,7 +11,15 @@ router.use(function (req, res, next) {
     next();
 });
 
-
+router.get('/', async function (req, res) {
+    if (!req.session.loggedIn)
+        res.redirect('/auth/login')
+    else if (!req.session.user.Admin && !req.session.user.Staff) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
+    else {
+        let Stats = await AppStats.findOne({});
+        res.render('assistant/home', { name: req.session.username, user: req.session.user, dev: process.env.DEV, stats: Stats });
+    }
+});
 
 const TimeData = {
     "morning": {
@@ -56,7 +67,7 @@ const TimeData = {
     }
 };
 router.use(function (req, res) {
-    return res.status(404).render('admin/404', { name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png" });
+    return res.status(404).render('assistant/404', { name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png" });
 });
 router.use(async function (err, req, res, next) {
     if (!err) {
@@ -65,7 +76,7 @@ router.use(async function (err, req, res, next) {
     console.log("[ERROR]: Error on path:", req._parsedUrl.pathname);
     console.log('[ERROR]: Error from lab assistant module');
     console.log(err, err.stack);
-    return res.status(500).render('admin/500', { name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png" });
+    return res.status(500).render('assistant/500', { name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png" });
 });
 
 module.exports = router;
