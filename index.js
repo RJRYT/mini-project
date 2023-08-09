@@ -96,6 +96,7 @@ app.use("/api", require('./Routers/Api'));
 app.use("/admin/api", require('./Routers/Api.Admin'));
 app.use("/dashboard", require('./Routers/DashBoard'));
 app.use("/admin", require('./Routers/Admin'));
+app.use("/office", require('./Routers/Assistant'));
 console.log("[LOG]: Sub routers loaded");
 /**
  * Error Handlers
