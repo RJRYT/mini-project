@@ -53,7 +53,7 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="/drive/image/<%= user.ProfilePic %>" class="user-image imgfix img-circle elevation-2"
+                                <img src="/drive/image/<%= user.ProfilePic || 'defaultpic.png' %>" class="user-image imgfix img-circle elevation-2"
                                     alt="User Image" style="height: 25px; width: 25px;">
                                 <span class="d-none d-md-inline">
                                     <%=name%>

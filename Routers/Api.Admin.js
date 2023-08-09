@@ -213,7 +213,7 @@ router.delete('/delete/test', async (req, res) => {
 router.get('/view/appoinment', (req, res) => {
     if (!req.session.loggedIn)
         return res.status(200).json({ "status": 403, "message": "You are not loggined." });
-    else if (!req.session.user.Admin) res.status(200).json({ "status": 403, "message": "You are not authosrised" })
+    else if (!req.session.user.Admin && !req.session.user.Staff) res.status(200).json({ "status": 403, "message": "You are not authosrised" })
     else {
         if (!req.query) return res.status(200).json({ "status": 403, "message": "Provide the parameters to continue." });
         if (!req.query.id) return res.status(200).json({ "status": 403, "message": "Provide appoinment id" });
@@ -228,7 +228,7 @@ router.get('/view/appoinment', (req, res) => {
 router.get('/search/appoinment', async (req, res) => {
     if (!req.session.loggedIn)
         return res.status(200).json({ "status": 403, "message": "You are not loggined." });
-    else if (!req.session.user.Admin) res.status(200).json({ "status": 403, "message": "You are not authosrised" })
+    else if (!req.session.user.Admin && !req.session.user.Staff) res.status(200).json({ "status": 403, "message": "You are not authosrised" })
     else {
         if (!req.query) return res.status(200).json({ "status": 403, "message": "Provide the parameters to continue." });
         if (!req.query.id) return res.status(200).json({ "status": 403, "message": "Provide appoinment id" });
@@ -331,7 +331,7 @@ router.delete('/delete/appoinment', async (req, res) => {
 router.put('/edit/appoinment', async function (req, res) {
     if (!req.session.loggedIn)
         return res.status(200).json({ "status": 403, "message": "You are not loggined." });
-    else if (!req.session.user.Admin) res.status(200).json({ "status": 403, "message": "You are not authosrised" })
+    else if (!req.session.user.Admin && !req.session.user.Staff) res.status(200).json({ "status": 403, "message": "You are not authosrised" })
     else {
         if (!req.body) return res.status(200).json({ "status": 403, "message": "Provide the parameters to continue." });
         if (!req.body.id) return res.status(200).json({ "status": 403, "message": "Provide appoinment id" });
@@ -359,7 +359,7 @@ router.put('/edit/appoinment', async function (req, res) {
 router.put('/update/appoinment', async function (req, res) {
     if (!req.session.loggedIn)
         return res.status(200).json({ "status": 403, "message": "You are not loggined." });
-    else if (!req.session.user.Admin) res.status(200).json({ "status": 403, "message": "You are not authosrised" })
+    else if (!req.session.user.Admin && !req.session.user.Staff) res.status(200).json({ "status": 403, "message": "You are not authosrised" })
     else {
         if (!req.body) return res.status(200).json({ "status": 403, "message": "Provide the parameters to continue." });
         if (!req.body.id) return res.status(200).json({ "status": 403, "message": "Provide appoinment id" });

@@ -2,7 +2,9 @@ const express = require('express');
 router = express.Router();
 
 const AppStats = require('../DbModel/stats');
-
+const Test = require('../DbModel/tests');
+const Appoinment = require('../DbModel/appoinments');
+const UserDB = require('../DbModel/user');
 
 router.use(function (req, res, next) {
     res.appendHeader("Cache-Control", "public, max-age=300");
@@ -18,6 +20,57 @@ router.get('/', async function (req, res) {
     else {
         let Stats = await AppStats.findOne({});
         res.render('assistant/home', { name: req.session.username, user: req.session.user, dev: process.env.DEV, stats: Stats });
+    }
+});
+
+router.get('/results', async function (req, res) {
+    if (!req.session.loggedIn)
+        res.redirect('/auth/login')
+    else if (!req.session.user.Admin && !req.session.user.Staff) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
+    else {
+        let id = null;
+        if (req.query && req.query.id) {
+            id = req.query.id;
+        }
+        res.render('assistant/results', { name: req.session.username, user: req.session.user, dev: process.env.DEV, id: id });
+    }
+});
+
+router.get('/appoinments', async function (req, res) {
+    if (!req.session.loggedIn)
+        res.redirect('/auth/login')
+    else if (!req.session.user.Admin && !req.session.user.Staff) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
+    else {
+        let BookingData = [];
+        BookingData = await Appoinment.find({});
+        const DateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        for (let item = 0; item < BookingData.length; item++) {
+            BookingData[item].Time = BookingData[item].Date.toLocaleDateString('en-US', DateOptions) + " " + TimeData[BookingData[item].Time].Time.find(i => i.ID == BookingData[item].Hour).Name;
+            BookingData[item].Hour = BookingData[item].createdAt.toLocaleDateString('en-US', DateOptions);
+            BookingData[item].User = {};
+            const temp = await UserDB.findOne({ "_id": BookingData[item].UserId });
+            BookingData[item].User = temp;
+        }
+        BookingData.sort((a, b) => (a.Status > b.Status) ? 1 : (a.Status < b.Status) ? -1 : 0);
+        res.render('assistant/appoinments', { name: req.session.username, user: req.session.user, dev: process.env.DEV, data: BookingData });
+    }
+});
+router.get('/appoinments/:id', async function (req, res) {
+    if (!req.session.loggedIn)
+        res.redirect('/auth/login')
+    else if (!req.session.user.Admin && !req.session.user.Staff) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
+    else {
+        if (!req.params) return res.render('assistant/404', { name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png" });
+        if (!req.params.id) return res.render('assistant/404', { name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png" });
+        var BookingData = await Appoinment.findOne({ "ID": req.params.id });
+        if (!BookingData) return res.render('assistant/404', { name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png" });
+        const DateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        BookingData.Time = BookingData.Date.toLocaleDateString('en-US', DateOptions) + " " + TimeData[BookingData.Time].Time.find(i => i.ID == BookingData.Hour).Name;
+        BookingData.Hour = BookingData.createdAt.toLocaleDateString('en-US', DateOptions);
+        const TestList = await Test.findOne({ "ID": BookingData.TestId });
+        BookingData.TestId = TestList.Name;
+        const Patient = await UserDB.findOne({ "_id": BookingData.UserId });
+        res.render('assistant/appoinmentinfo', { name: req.session.username, user: req.session.user, dev: process.env.DEV, data: BookingData, patient: Patient });
     }
 });
 
