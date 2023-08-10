@@ -30,31 +30,3 @@ function _ReloadPage() {
         window.location.reload();
     }
 }
-
-$(document).ready(() => {
-    let MyEmojis = [
-        "😀",
-        "😁",
-        "😂",
-        "😃",
-        "😄",
-        "😅",
-        "😆",
-        "😇",
-        "😈",
-        "😉",
-        "😊",
-        "😋",
-        "😌",
-        "😍",
-        "😎",
-        "😏",
-    ];
-    let title = document.title;
-    window.addEventListener('blur', () => {
-        document.title = `(Not Active) - (${MyEmojis[Math.floor((Date.now() / 100) % MyEmojis.length)]}) -${title}`;
-    });
-    window.addEventListener('focus', () => {
-        document.title = title;
-    });
-})
