@@ -47,6 +47,14 @@ router.get('/appoinments', async function (req, res) {
         BookingData = await Appoinment.find({});
         const DateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         for (let item = 0; item < BookingData.length; item++) {
+            if(BookingData[item].Status == 1){
+                BookingData.splice(item, 1);
+                continue;
+            }
+            if(BookingData[item].Status == 3){
+                BookingData.splice(item, 1);
+                continue;
+            }
             BookingData[item].Time = BookingData[item].Date.toLocaleDateString('en-US', DateOptions) + " " + TimeData[BookingData[item].Time].Time.find(i => i.ID == BookingData[item].Hour).Name;
             BookingData[item].Hour = BookingData[item].createdAt.toLocaleDateString('en-US', DateOptions);
             BookingData[item].User = {};
