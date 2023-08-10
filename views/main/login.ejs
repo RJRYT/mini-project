@@ -44,431 +44,451 @@
         <body class="clinic_version">
             <!-- LOADER -->
             <% if(!dev){ %>
-            <div id="preloader">
-                <img class="preloader" src="/images/loaders/heart-loading2.gif" alt="">
-            </div>
-            <% } %>
-            <!-- END LOADER -->
-            <header>
-                <div class="header-bottom wow fadeIn">
-                    <div class="container">
-                        <nav class="main-menu">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                    data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i
-                                        class="fa fa-bars" aria-hidden="true"></i></button>
-                            </div>
+                <div id="preloader">
+                    <img class="preloader" src="/images/loaders/heart-loading2.gif" alt="">
+                </div>
+                <% } %>
+                    <!-- END LOADER -->
+                    <header>
+                        <div class="header-bottom wow fadeIn">
+                            <div class="container">
+                                <nav class="main-menu">
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                            data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i
+                                                class="fa fa-bars" aria-hidden="true"></i></button>
+                                    </div>
 
-                            <div id="navbar" class="navbar-collapse collapse">
-                                <ul class="nav navbar-nav">
-                                    <li><a data-scroll href="/">Home</a></li>
-                                    <li><a data-scroll href="/contact">Contact</a></li>
-                                    <li><a data-scroll href="/about">About us</a></li>
-                                    <li><a class="active" href="/auth/login">Get Started</a></li>
-                                </ul>
-                            </div>
-                        </nav>
-                        <div class="serch-bar">
-                            <div id="custom-search-input">
-                                <div class="input-group col-md-12">
-                                    <input type="text" class="form-control input-lg" placeholder="Search" />
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-info btn-lg" type="button">
-                                            <i class="fa fa-search" aria-hidden="true"></i>
-                                        </button>
-                                    </span>
+                                    <div id="navbar" class="navbar-collapse collapse">
+                                        <ul class="nav navbar-nav">
+                                            <li><a data-scroll href="/">Home</a></li>
+                                            <li><a data-scroll href="/contact">Contact</a></li>
+                                            <li><a data-scroll href="/about">About us</a></li>
+                                            <li><a class="active" href="/auth/login">Sign up</a></li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                                <div class="serch-bar">
+                                    <div id="custom-search-input">
+                                        <div class="input-group col-md-12">
+                                            <input type="text" class="form-control input-lg" placeholder="Search" />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-info btn-lg" type="button">
+                                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </header>
-            <div id="home" class="parallax first-section wow fadeIn" data-stellar-background-ratio="0.4"
-                style="background-image:url('/images/bg-testimonial.png');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-5 mx-auto">
-                            <div id="first">
-                                <div class="myform form ">
-                                    <div class="logo mb-3">
-                                        <div class="col-md-12 text-center">
-                                            <h1>Login</h1>
-                                        </div>
-                                    </div>
-                                    <%if(query.err=='failed' ){%>
-                                        <div class="alert alert-danger alert-dismissible" role="alert">
-                                            <button type="button" class="close" data-dismiss="alert"
-                                                aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <strong>Error!</strong> Invalid login details.
-                                        </div>
-                                        <%}%>
-                                            <form action="/auth/login" method="post" name="login">
-                                                <div class="form-group">
-                                                    <label for="email">Email address</label>
-                                                    <input type="email" name="email" class="form-control" id="email"
-                                                        aria-describedby="emailHelp" placeholder="Enter email" required>
+                    </header>
+                    <div id="home" class="parallax first-section wow fadeIn" data-stellar-background-ratio="0.4"
+                        style="background-image:url('/images/bg-testimonial.png');">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-5 mx-auto">
+                                    <div id="first">
+                                        <div class="myform form ">
+                                            <div class="logo mb-3">
+                                                <div class="col-md-12 text-center">
+                                                    <h1>Login</h1>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="password">Password</label>
-                                                    <input type="password" name="password" id="password"
-                                                        class="form-control" aria-describedby="emailHelp"
-                                                        placeholder="Enter Password" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <p class="text-center">By signing up you accept our <a
-                                                            href="#">Terms Of Use</a>
-                                                    </p>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button type="submit"
-                                                        class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
-                                                </div>
-                                                <div class="col-md-12 ">
-                                                    <div class="login-or">
-                                                        <hr class="hr-or">
-                                                        <span class="span-or">or</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <p class="text-center">Don't have account? <a href="#"
-                                                            id="signup">Sign up
-                                                            here</a></p>
-                                                </div>
-                                            </form>
-
-                                </div>
-                            </div>
-                            <div id="second">
-                                <div class="myform form ">
-                                    <div class="logo mb-3">
-                                        <div class="col-md-12 text-center">
-                                            <h1>Signup</h1>
-                                        </div>
-                                    </div>
-                                    <%if(query.err=='passnotmatch'){%>
-                                        <div class="alert alert-danger" role="alert" id="umsg">
-                                            <strong>Error!</strong> The Password and Confirm password not match
-                                        </div>
-                                        <%}else if(query.err=='userexist' ){%>
-                                            <div class="alert alert-danger" role="alert" id="umsg">
-                                                <strong>Error!</strong> The Email you entered is already exist
                                             </div>
-                                            <%}else if(query.err=='userexist' ){%>
-                                                <div class="alert alert-danger" role="alert" id="umsg">
-                                                    <strong>Error!</strong> Failed to register user. Retry again
+                                            <%if(query.err=='failed' ){%>
+                                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                                    <button type="button" class="close" data-dismiss="alert"
+                                                        aria-label="Close"><span
+                                                            aria-hidden="true">&times;</span></button>
+                                                    <strong>Error!</strong> Invalid login details.
                                                 </div>
                                                 <%}%>
-                                                    <form id="UserSignup" action="/auth/signup" method="post"
-                                                        name="registration">
-                                                        <div class="form-group">
-                                                            <label for="firstname">First Name</label>
-                                                            <input type="text" name="firstname" class="form-control"
-                                                                id="firstname" aria-describedby="emailHelp"
-                                                                placeholder="Enter Firstname"
-                                                                pattern="[A-Za-z0-9]{1,15}"
-                                                                title="Enter a valid firstname. No space required. Max 10 characters"
-                                                                required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="lastname">Last Name</label>
-                                                            <input type="text" name="lastname" class="form-control"
-                                                                id="lastname" aria-describedby="emailHelp"
-                                                                placeholder="Enter Lastname" pattern="[A-Za-z0-9]{1,15}"
-                                                                title="Enter a valid lastname. No space required. Max 10 characters"
-                                                                required>
-                                                        </div>
+                                                    <form id="login-submit" action="/auth/login" method="post" name="login">
                                                         <div class="form-group">
                                                             <label for="email">Email address</label>
                                                             <input type="email" name="email" class="form-control"
                                                                 id="email" aria-describedby="emailHelp"
-                                                                placeholder="Enter email"
-                                                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                                                                required>
+                                                                placeholder="Enter email" required>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="signpass">Password</label>
-                                                            <i class="far fa-eye" id="togglePassword"></i>
-                                                            <input type="password" name="password" id="signpass"
-                                                                class="form-control" aria-describedby="emailHelp"
-                                                                placeholder="Enter Password"
-                                                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                                                                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                                                                required>
-                                                        </div>
-                                                        <div id="message">
-                                                            <h4>Password must contain the following:</h4>
-                                                            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-                                                            <p id="capital" class="invalid">A <b>capital (uppercase)</b>
-                                                                letter</p>
-                                                            <p id="number" class="invalid">A <b>number</b></p>
-                                                            <p id="length" class="invalid">Minimum <b>8 characters</b>
-                                                            </p>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="cpassword">Confirm Password</label>
-                                                            <input type="password" name="cpassword" id="cpassword"
+                                                            <label for="password">Password</label>
+                                                            <input type="password" name="password" id="password"
                                                                 class="form-control" aria-describedby="emailHelp"
                                                                 placeholder="Enter Password" required>
                                                         </div>
                                                         <div class="form-group">
-                                                            <button id="UserSignup" type="submit"
-                                                                class=" btn btn-block mybtn btn-primary tx-tfm"
-                                                                style="margin-top: 12px;">Get
-                                                                Started For Free</button>
+                                                            <p class="text-center">By signing up you accept our <a
+                                                                    href="#">Terms Of Use</a>
+                                                            </p>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" id="login-submit-b"
+                                                                class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
                                                         </div>
                                                         <div class="col-md-12 ">
-                                                            <div class="form-group">
-                                                                <p class="text-center"><a href="#" id="signin">Already
-                                                                        have an
-                                                                        account?</a>
-                                                                </p>
+                                                            <div class="login-or">
+                                                                <hr class="hr-or">
+                                                                <span class="span-or">or</span>
                                                             </div>
                                                         </div>
+                                                        <div class="form-group">
+                                                            <p class="text-center">Don't have account? <a href="#"
+                                                                    id="signup">Sign up
+                                                                    here</a></p>
+                                                        </div>
+                                                    </form>
+
+                                        </div>
+                                    </div>
+                                    <div id="second">
+                                        <div class="myform form ">
+                                            <div class="logo mb-3">
+                                                <div class="col-md-12 text-center">
+                                                    <h1>Signup</h1>
+                                                </div>
+                                            </div>
+                                            <%if(query.err=='passnotmatch'){%>
+                                                <div class="alert alert-danger" role="alert" id="umsg">
+                                                    <strong>Error!</strong> The Password and Confirm password not match
+                                                </div>
+                                                <%}else if(query.err=='userexist' ){%>
+                                                    <div class="alert alert-danger" role="alert" id="umsg">
+                                                        <strong>Error!</strong> The Email you entered is already exist
+                                                    </div>
+                                                    <%}else if(query.err=='userexist' ){%>
+                                                        <div class="alert alert-danger" role="alert" id="umsg">
+                                                            <strong>Error!</strong> Failed to register user. Retry again
+                                                        </div>
+                                                        <%}%>
+                                                            <form id="signup-submit" action="/auth/signup" method="post"
+                                                                name="registration">
+                                                                <div class="form-group">
+                                                                    <label for="firstname">First Name</label>
+                                                                    <input type="text" name="firstname"
+                                                                        class="form-control" id="firstname"
+                                                                        aria-describedby="emailHelp"
+                                                                        placeholder="Enter Firstname"
+                                                                        pattern="[A-Za-z0-9]{1,15}"
+                                                                        title="Enter a valid firstname. No space required. Max 10 characters"
+                                                                        required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="lastname">Last Name</label>
+                                                                    <input type="text" name="lastname"
+                                                                        class="form-control" id="lastname"
+                                                                        aria-describedby="emailHelp"
+                                                                        placeholder="Enter Lastname"
+                                                                        pattern="[A-Za-z0-9]{1,15}"
+                                                                        title="Enter a valid lastname. No space required. Max 10 characters"
+                                                                        required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="email">Email address</label>
+                                                                    <input type="email" name="email"
+                                                                        class="form-control" id="email"
+                                                                        aria-describedby="emailHelp"
+                                                                        placeholder="Enter email"
+                                                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                                                        required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="signpass">Password</label>
+                                                                    <i class="far fa-eye" id="togglePassword"></i>
+                                                                    <input type="password" name="password" id="signpass"
+                                                                        class="form-control"
+                                                                        aria-describedby="emailHelp"
+                                                                        placeholder="Enter Password"
+                                                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                                                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                                                                        required>
+                                                                </div>
+                                                                <div id="message">
+                                                                    <h4>Password must contain the following:</h4>
+                                                                    <p id="letter" class="invalid">A <b>lowercase</b>
+                                                                        letter</p>
+                                                                    <p id="capital" class="invalid">A <b>capital
+                                                                            (uppercase)</b>
+                                                                        letter</p>
+                                                                    <p id="number" class="invalid">A <b>number</b></p>
+                                                                    <p id="length" class="invalid">Minimum <b>8
+                                                                            characters</b>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="cpassword">Confirm Password</label>
+                                                                    <input type="password" name="cpassword"
+                                                                        id="cpassword" class="form-control"
+                                                                        aria-describedby="emailHelp"
+                                                                        placeholder="Enter Password" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <button id="signup-submit-b" type="submit"
+                                                                        class=" btn btn-block mybtn btn-primary tx-tfm"
+                                                                        style="margin-top: 12px;">Get
+                                                                        Started For Free</button>
+                                                                </div>
+                                                                <div class="col-md-12 ">
+                                                                    <div class="form-group">
+                                                                        <p class="text-center"><a href="#"
+                                                                                id="signin">Already
+                                                                                have an
+                                                                                account?</a>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                        </div>
+                                        </form>
+                                    </div>
                                 </div>
-                                </form>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- end container -->
-            </div>
-            <style>
-                a {
-                    text-decoration: none !important;
-                }
-
-                h1,
-                h2,
-                h3 {
-                    font-family: 'Kaushan Script', cursive;
-                }
-
-                .myform {
-                    position: relative;
-                    display: -ms-flexbox;
-                    display: flex;
-                    padding: 1rem;
-                    -ms-flex-direction: column;
-                    flex-direction: column;
-                    width: 100%;
-                    pointer-events: auto;
-                    background-color: #fff;
-                    background-clip: padding-box;
-                    border: 1px solid rgba(0, 0, 0, .2);
-                    border-radius: 1.1rem;
-                    outline: 0;
-                    max-width: 500px;
-                }
-
-                .tx-tfm {
-                    text-transform: uppercase;
-                }
-
-                .mybtn {
-                    border-radius: 50px;
-                }
-
-                .login-or {
-                    position: relative;
-                    color: #aaa;
-                    margin-top: 10px;
-                    margin-bottom: 10px;
-                    padding-top: 10px;
-                    padding-bottom: 10px;
-                }
-
-                .span-or {
-                    display: block;
-                    position: absolute;
-                    left: 50%;
-                    top: -2px;
-                    margin-left: -25px;
-                    background-color: #fff;
-                    width: 50px;
-                    text-align: center;
-                }
-
-                .hr-or {
-                    height: 1px;
-                    margin-top: 0px !important;
-                    margin-bottom: 0px !important;
-                }
-
-                .google {
-                    color: #666;
-                    width: 100%;
-                    height: 40px;
-                    text-align: center;
-                    outline: none;
-                    border: 1px solid lightgrey;
-                }
-
-                form .error {
-                    color: #ff0000;
-                }
-
-                #second {
-                    display: none;
-                }
-            </style>
-            <style>
-                #togglePassword {
-                    float: right;
-                    padding-top: 15px;
-                    cursor: pointer;
-                }
-
-                #message {
-                    display: none;
-                    background: transparent;
-                    color: #000;
-                    font-size: 9px;
-                }
-
-                #message p {
-                    padding-right: 10px;
-                    font-size: 9px;
-                }
-
-                /* Add a green text color and a checkmark when the requirements are right */
-                .valid {
-                    color: green;
-                }
-
-                .valid:before {
-                    left: -35px;
-                    content: "✔";
-                }
-
-                /* Add a red text color and an "x" when the requirements are wrong */
-                .invalid {
-                    color: red;
-                }
-
-                .invalid:before {
-                    left: -35px;
-                    content: "✖";
-                }
-            </style>
-            <script>
-                var myInput = document.getElementById("signpass");
-                var letter = document.getElementById("letter");
-                var capital = document.getElementById("capital");
-                var number = document.getElementById("number");
-                var length = document.getElementById("length");
-
-                // When the user clicks on the password field, show the message box
-                myInput.onfocus = function () {
-                    document.getElementById("message").style.display = "block";
-                }
-
-                // When the user clicks outside of the password field, hide the message box
-                myInput.onblur = function () {
-                    document.getElementById("message").style.display = "none";
-                }
-
-                // When the user starts to type something inside the password field
-                myInput.onkeyup = function () {
-                    // Validate lowercase letters
-                    var lowerCaseLetters = /[a-z]/g;
-                    if (myInput.value.match(lowerCaseLetters)) {
-                        letter.classList.remove("invalid");
-                        letter.classList.add("valid");
-                    } else {
-                        letter.classList.remove("valid");
-                        letter.classList.add("invalid");
-                    }
-
-                    // Validate capital letters
-                    var upperCaseLetters = /[A-Z]/g;
-                    if (myInput.value.match(upperCaseLetters)) {
-                        capital.classList.remove("invalid");
-                        capital.classList.add("valid");
-                    } else {
-                        capital.classList.remove("valid");
-                        capital.classList.add("invalid");
-                    }
-
-                    // Validate numbers
-                    var numbers = /[0-9]/g;
-                    if (myInput.value.match(numbers)) {
-                        number.classList.remove("invalid");
-                        number.classList.add("valid");
-                    } else {
-                        number.classList.remove("valid");
-                        number.classList.add("invalid");
-                    }
-
-                    // Validate length
-                    if (myInput.value.length >= 8) {
-                        length.classList.remove("invalid");
-                        length.classList.add("valid");
-                    } else {
-                        length.classList.remove("valid");
-                        length.classList.add("invalid");
-                    }
-                }
-            </script>
-            <script>
-                $("#signup").click(function () {
-                    $("#first").fadeOut("fast", function () {
-                        $("#second").fadeIn("fast");
-                    });
-                });
-
-                $("#signin").click(function () {
-                    $("#second").fadeOut("fast", function () {
-                        $("#first").fadeIn("fast");
-                    });
-                });
-                const togglePassword = document.querySelector('#togglePassword');
-                const password = document.querySelector('#signpass');
-                const cpassword = document.querySelector('#cpassword');
-
-                togglePassword.addEventListener('click', function (e) {
-                    // toggle the type attribute
-                    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-                    password.setAttribute('type', type);
-                    cpassword.setAttribute('type', type);
-                    // toggle the eye slash icon
-                    this.classList.toggle('fa-eye-slash');
-                });
-            </script>
-            <!-- end section -->
-            <div class="copyright-area wow fadeIn">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="footer-text">
-                                <p>© 2023 Supreme Lifecare. All Rights Reserved.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="social">
-                                <ul class="social-links">
-                                    <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href=""><i class="fa fa-youtube"></i></a></li>
-                                </ul>
+                    <!-- end container -->
+                    </div>
+                    <!-- end section -->
+                    <div class="copyright-area wow fadeIn">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="footer-text">
+                                        <p>© 2023 Supreme Lifecare. All Rights Reserved.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="social">
+                                        <ul class="social-links">
+                                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href=""><i class="fa fa-youtube"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- end copyrights -->
-            <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
-            <!-- all js files -->
-            <script src="/js/all.js"></script>
-            <!-- all plugins -->
-            <script src="/js/custom.js"></script>
-            <script>
-                $(document).ready(function () {
-                    history.replaceState && history.replaceState(
-                        null, '', location.pathname + location.search.replace(/[\?&]err=[^&]+/, '').replace(/[\?&]path=[^&]+/, '').replace(/^&/, '?')
-                    );
-                });
-            </script>
+                    <!-- end copyrights -->
+                    <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+                    <!-- all js files -->
+                    <script src="/js/all.js"></script>
+                    <!-- all plugins -->
+                    <script src="/js/custom.js"></script>
+                    <script>
+                        $(document).ready(function () {
+                            history.replaceState && history.replaceState(
+                                null, '', location.pathname + location.search.replace(/[\?&]err=[^&]+/, '').replace(/[\?&]path=[^&]+/, '').replace(/^&/, '?')
+                            );
+                        });
+                    </script>
+                    <style>
+                        a {
+                            text-decoration: none !important;
+                        }
+
+                        h1,
+                        h2,
+                        h3 {
+                            font-family: 'Kaushan Script', cursive;
+                        }
+
+                        .myform {
+                            position: relative;
+                            display: -ms-flexbox;
+                            display: flex;
+                            padding: 1rem;
+                            -ms-flex-direction: column;
+                            flex-direction: column;
+                            width: 100%;
+                            pointer-events: auto;
+                            background-color: #fff;
+                            background-clip: padding-box;
+                            border: 1px solid rgba(0, 0, 0, .2);
+                            border-radius: 1.1rem;
+                            outline: 0;
+                            max-width: 500px;
+                        }
+
+                        .tx-tfm {
+                            text-transform: uppercase;
+                        }
+
+                        .mybtn {
+                            border-radius: 50px;
+                        }
+
+                        .login-or {
+                            position: relative;
+                            color: #aaa;
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+                            padding-top: 10px;
+                            padding-bottom: 10px;
+                        }
+
+                        .span-or {
+                            display: block;
+                            position: absolute;
+                            left: 50%;
+                            top: -2px;
+                            margin-left: -25px;
+                            background-color: #fff;
+                            width: 50px;
+                            text-align: center;
+                        }
+
+                        .hr-or {
+                            height: 1px;
+                            margin-top: 0px !important;
+                            margin-bottom: 0px !important;
+                        }
+
+                        .google {
+                            color: #666;
+                            width: 100%;
+                            height: 40px;
+                            text-align: center;
+                            outline: none;
+                            border: 1px solid lightgrey;
+                        }
+
+                        form .error {
+                            color: #ff0000;
+                        }
+
+                        #second {
+                            display: none;
+                        }
+                    </style>
+                    <style>
+                        #togglePassword {
+                            float: right;
+                            padding-top: 15px;
+                            cursor: pointer;
+                        }
+
+                        #message {
+                            display: none;
+                            background: transparent;
+                            color: #000;
+                            font-size: 9px;
+                        }
+
+                        #message p {
+                            padding-right: 10px;
+                            font-size: 9px;
+                        }
+
+                        /* Add a green text color and a checkmark when the requirements are right */
+                        .valid {
+                            color: green;
+                        }
+
+                        .valid:before {
+                            left: -35px;
+                            content: "✔";
+                        }
+
+                        /* Add a red text color and an "x" when the requirements are wrong */
+                        .invalid {
+                            color: red;
+                        }
+
+                        .invalid:before {
+                            left: -35px;
+                            content: "✖";
+                        }
+                    </style>
+                    <script>
+                        var myInput = document.getElementById("signpass");
+                        var letter = document.getElementById("letter");
+                        var capital = document.getElementById("capital");
+                        var number = document.getElementById("number");
+                        var length = document.getElementById("length");
+
+                        // When the user clicks on the password field, show the message box
+                        myInput.onfocus = function () {
+                            document.getElementById("message").style.display = "block";
+                        }
+
+                        // When the user clicks outside of the password field, hide the message box
+                        myInput.onblur = function () {
+                            document.getElementById("message").style.display = "none";
+                        }
+
+                        // When the user starts to type something inside the password field
+                        myInput.onkeyup = function () {
+                            // Validate lowercase letters
+                            var lowerCaseLetters = /[a-z]/g;
+                            if (myInput.value.match(lowerCaseLetters)) {
+                                letter.classList.remove("invalid");
+                                letter.classList.add("valid");
+                            } else {
+                                letter.classList.remove("valid");
+                                letter.classList.add("invalid");
+                            }
+
+                            // Validate capital letters
+                            var upperCaseLetters = /[A-Z]/g;
+                            if (myInput.value.match(upperCaseLetters)) {
+                                capital.classList.remove("invalid");
+                                capital.classList.add("valid");
+                            } else {
+                                capital.classList.remove("valid");
+                                capital.classList.add("invalid");
+                            }
+
+                            // Validate numbers
+                            var numbers = /[0-9]/g;
+                            if (myInput.value.match(numbers)) {
+                                number.classList.remove("invalid");
+                                number.classList.add("valid");
+                            } else {
+                                number.classList.remove("valid");
+                                number.classList.add("invalid");
+                            }
+
+                            // Validate length
+                            if (myInput.value.length >= 8) {
+                                length.classList.remove("invalid");
+                                length.classList.add("valid");
+                            } else {
+                                length.classList.remove("valid");
+                                length.classList.add("invalid");
+                            }
+                        }
+                    </script>
+                    <script>
+                        $("#signup").click(function () {
+                            $("#first").fadeOut("fast", function () {
+                                $("#second").fadeIn("fast");
+                            });
+                        });
+
+                        $("#signin").click(function () {
+                            $("#second").fadeOut("fast", function () {
+                                $("#first").fadeIn("fast");
+                            });
+                        });
+                        const togglePassword = document.querySelector('#togglePassword');
+                        const password = document.querySelector('#signpass');
+                        const cpassword = document.querySelector('#cpassword');
+
+                        togglePassword.addEventListener('click', function (e) {
+                            // toggle the type attribute
+                            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                            password.setAttribute('type', type);
+                            cpassword.setAttribute('type', type);
+                            // toggle the eye slash icon
+                            this.classList.toggle('fa-eye-slash');
+                        });
+                    </script>
+                    <script>
+                        document.getElementById("login-submit").addEventListener('submit', (e) => {
+                            document.getElementById("login-submit-b").disabled = true;
+                        })
+                        document.getElementById("signup-submit").addEventListener('submit', (e) => {
+                            document.getElementById("signup-submit-b").disabled = true;
+                        })
+                    </script>
         </body>
 
 </html>

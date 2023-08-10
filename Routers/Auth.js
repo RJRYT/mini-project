@@ -5,13 +5,6 @@ const UserDB = require('../DbModel/user');
 const AppStats = require('../DbModel/stats');
 const UserAgent = require('useragent');
 
-router.use(function (req, res, next) {
-    res.appendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    res.appendHeader("Pragma", "no-cache");
-    res.appendHeader("Expires", "0");
-    next();
-});
-
 router.get('/', (req, res) => {
     return res.redirect('/auth/login');
 });
@@ -48,9 +41,7 @@ router.post('/signup', async function (req, res, next) {
         req.session.username = user.FirstName
         user.Password = null
         req.session.user = user;
-        req.session.ip = req.ip;
         req.session.userid = user._id;
-        req.session.agent = UserAgent.parse(req.headers['user-agent']).toAgent();
         res.redirect('/dashboard');
     })
 })
@@ -71,10 +62,9 @@ router.post('/login', async function (req, res, next) {
     req.session.username = res.locals.username
     res.locals.user.Password = null
     req.session.user = res.locals.user
-    req.session.ip = req.ip;
     req.session.userid = res.locals.user._id;
-    req.session.agent = UserAgent.parse(req.headers['user-agent']).toAgent();
     if(req.session.user.Admin) res.redirect('/admin');
+    else if(req.session.user.Staff) res.redirect('/office');
     else res.redirect('/dashboard');
 })
 

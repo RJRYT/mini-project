@@ -40,16 +40,6 @@
                         <li class="nav-item d-none d-sm-inline-block">
                             <a href="#" class="nav-link">Contact</a>
                         </li>
-                        <%if(user.Admin){%>
-                            <li class="nav-item d-none d-sm-inline-block">
-                                <a href="/admin" class="nav-link">Admin</a>
-                            </li>
-                            <%}%>
-                            <%if(user.Staff){%>
-                                <li class="nav-item d-none d-sm-inline-block">
-                                    <a href="/office" class="nav-link">Office Area</a>
-                                </li>
-                                <%}%>
                     </ul>
 
                     <!-- Right navbar links -->
@@ -107,22 +97,12 @@
                                 <a href="/dashboard/profile" class="dropdown-item">
                                     <i class="fas fa-user"></i> Profile
                                 </a>
-                                <%if(user.Admin){%>
-                                    <a href="/admin" class="dropdown-item">
-                                        <i class="fas fa-user-shield"></i> Admin
-                                    </a>
-                                    <%}%>
-                                    <%if(user.Staff){%>
-                                        <a href="/office" class="dropdown-item">
-                                            <i class="fas fa-user-nurse"></i> Office
-                                        </a>
-                                        <%}%>
-                                        <a href="/dashboard/result" class="dropdown-item  active">
-                                            <i class="fas fa-poll"></i> Result
-                                        </a>
-                                        <a href="/auth/logout" class="dropdown-item">
-                                            <i class="fas fa-sign-out-alt"></i> Logout
-                                        </a>
+                                <a href="/dashboard/result" class="dropdown-item  active">
+                                    <i class="fas fa-poll"></i> Result
+                                </a>
+                                <a href="/auth/logout" class="dropdown-item">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </a>
                             </div>
                         </li>
                     </ul>
@@ -140,7 +120,9 @@
                         <!-- Sidebar user panel (optional) -->
                         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                             <div class="image">
-                                <img src="/drive/image/<%= image %>" class="img-circle imgfix elevation-2" alt="User Image" style="height: 30px; width: 30px;">                            </div>
+                                <img src="/drive/image/<%= image %>" class="img-circle imgfix elevation-2"
+                                    alt="User Image" style="height: 30px; width: 30px;">
+                            </div>
                             <div class="info">
                                 <a href="/dashboard/profile" class="d-block">
                                     <%=name%>

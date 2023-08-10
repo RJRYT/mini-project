@@ -4,16 +4,11 @@ const Appoinment = require('../DbModel/appoinments');
 const Test = require('../DbModel/tests');
 const Reports = require('../DbModel/results');
 
-router.use(function (req, res, next) {
-    res.appendHeader("Cache-Control", "public, max-age=300");
-    res.appendHeader("Pragma", "cache");
-    res.appendHeader("Expires", "300");
-    next();
-});
-
 router.get('/', function (req, res) {
     if (!req.session.loggedIn)
         res.redirect('/auth/login')
+    else if (req.session.user.Admin) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
+    else if (req.session.user.Staff) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
     else {
         res.render('userdashboard/home', {name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png", dev: process.env.DEV});
     }
@@ -22,6 +17,8 @@ router.get('/', function (req, res) {
 router.get('/profile', function (req, res) {
     if (!req.session.loggedIn)
         res.redirect('/auth/login')
+        else if (req.session.user.Admin) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
+    else if (req.session.user.Staff) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
     else {
         res.render('userdashboard/profile', {name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png", dev: process.env.DEV});
     }
@@ -30,6 +27,8 @@ router.get('/profile', function (req, res) {
 router.get('/booking', async function (req, res) {
     if (!req.session.loggedIn)
         res.redirect('/auth/login')
+        else if (req.session.user.Admin) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
+    else if (req.session.user.Staff) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
     else {
         const BookingData = await Appoinment.find({"UserId":req.session.user._id});
         const DateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -50,6 +49,8 @@ router.get('/booking', async function (req, res) {
 router.get('/booking/:id', async function (req, res) {
     if (!req.session.loggedIn)
         res.redirect('/auth/login')
+        else if (req.session.user.Admin) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
+    else if (req.session.user.Staff) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
     else {
         if(!req.params) return res.render('userdashboard/404', {name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png"});
         if(!req.params.id) return res.render('userdashboard/404', {name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png"});
@@ -74,6 +75,8 @@ router.get('/booking/:id', async function (req, res) {
 router.get('/result', async function (req, res) {
     if (!req.session.loggedIn)
         res.redirect('/auth/login')
+        else if (req.session.user.Admin) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
+    else if (req.session.user.Staff) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
     else {
         const ResultList = await Reports.find({"UserId": req.session.user._id});
         const TestList = await Test.find({});

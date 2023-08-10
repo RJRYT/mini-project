@@ -23,8 +23,7 @@
         <!-- Preloader -->
         <% if(!dev){ %>
             <div class="preloader flex-column justify-content-center align-items-center">
-                <img class="animation__wobble" src="/images/icon-logo.png" alt="Dashboard Logo" height="60"
-                    width="60">
+                <img class="animation__wobble" src="/images/icon-logo.png" alt="Dashboard Logo" height="60" width="60">
             </div>
             <% } %>
                 <!-- Navbar -->
@@ -41,22 +40,12 @@
                         <li class="nav-item d-none d-sm-inline-block">
                             <a href="#" class="nav-link">Contact</a>
                         </li>
-                        <%if(user.Admin){%>
-                            <li class="nav-item d-none d-sm-inline-block">
-                                <a href="/admin" class="nav-link">Admin</a>
-                            </li>
-                            <%}%>
-                            <%if(user.Staff){%>
-                                <li class="nav-item d-none d-sm-inline-block">
-                                    <a href="/office" class="nav-link">Office Area</a>
-                                </li>
-                                <%}%>
                     </ul>
 
                     <!-- Right navbar links -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Notifications Dropdown Menu -->
-                        <li class="nav-item dropdown"  style="display: none;">
+                        <li class="nav-item dropdown" style="display: none;">
                             <a class="nav-link" data-toggle="dropdown" href="#">
                                 <i class="far fa-bell"></i>
                                 <span class="badge badge-warning navbar-badge">15</span>
@@ -89,16 +78,17 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="/drive/image/<%= image %>" class="user-image imgfix img-circle elevation-2" alt="User Image"
-                            style="height: 25px; width: 25px;">
+                                <img src="/drive/image/<%= image %>" class="user-image imgfix img-circle elevation-2"
+                                    alt="User Image" style="height: 25px; width: 25px;">
                                 <span class="d-none d-md-inline">
                                     <%=name%>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                                 <a class="dropdown-item">
-                                    <img src="/drive/image/<%= image %>" class="user-image imgfix img-circle elevation-2" alt="User Image"
-                            style="height: 25px; width: 25px;">
+                                    <img src="/drive/image/<%= image %>"
+                                        class="user-image imgfix img-circle elevation-2" alt="User Image"
+                                        style="height: 25px; width: 25px;">
                                     <span class="d-none d-md-inline">
                                         <%=name%>
                                     </span>
@@ -107,22 +97,12 @@
                                 <a href="/dashboard/profile" class="dropdown-item">
                                     <i class="fas fa-user"></i> Profile
                                 </a>
-                                <%if(user.Admin){%>
-                                    <a href="/admin" class="dropdown-item">
-                                        <i class="fas fa-user-shield"></i> Admin
-                                    </a>
-                                    <%}%>
-                                    <%if(user.Staff){%>
-                                        <a href="/office" class="dropdown-item">
-                                            <i class="fas fa-user-nurse"></i> Office
-                                        </a>
-                                        <%}%>
-                                        <a href="/dashboard/result" class="dropdown-item">
-                                            <i class="fas fa-poll"></i> Result
-                                        </a>
-                                        <a href="/auth/logout" class="dropdown-item">
-                                            <i class="fas fa-sign-out-alt"></i> Logout
-                                        </a>
+                                <a href="/dashboard/result" class="dropdown-item">
+                                    <i class="fas fa-poll"></i> Result
+                                </a>
+                                <a href="/auth/logout" class="dropdown-item">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </a>
                             </div>
                         </li>
                     </ul>
@@ -130,8 +110,8 @@
                 <aside class="main-sidebar sidebar-light-lightblue elevation-4">
                     <!-- Brand Logo -->
                     <a href="/dashboard" class="brand-link">
-                        <img src="/images/icon-logo.png" alt="Dashboard Logo"
-                            class="brand-image img-circle elevation-3" style="opacity: .8">
+                        <img src="/images/icon-logo.png" alt="Dashboard Logo" class="brand-image img-circle elevation-3"
+                            style="opacity: .8">
                         <span class="brand-text font-weight-light">Supreme Lifecare</span>
                     </a>
 
@@ -140,7 +120,9 @@
                         <!-- Sidebar user panel (optional) -->
                         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                             <div class="image">
-                                <img src="/drive/image/<%= image %>" class="img-circle imgfix elevation-2" alt="User Image" style="height: 30px; width: 30px;">                            </div>
+                                <img src="/drive/image/<%= image %>" class="img-circle imgfix elevation-2"
+                                    alt="User Image" style="height: 30px; width: 30px;">
+                            </div>
                             <div class="info">
                                 <a href="/dashboard/profile" class="d-block">
                                     <%=name%>
@@ -263,20 +245,25 @@
                                                                 Appoinment</a>
                                                             <% } %>
                                                                 <% if (Status < 3) { %>
-                                                                    <a class="btn btn-primary btn-sm" data-id="<%= data.ID %>"
+                                                                    <a class="btn btn-primary btn-sm"
+                                                                        data-id="<%= data.ID %>"
                                                                         onclick="EditAppoinmentData(this)"><i
                                                                             class="fas fa-edit"></i> Edit</a>
-                                                                    <a class="btn btn-danger btn-sm" data-id="<%= data.ID %>"
+                                                                    <a class="btn btn-danger btn-sm"
+                                                                        data-id="<%= data.ID %>"
                                                                         onclick="DeleteAppoinmentData(this)"><i
                                                                             class="fas fa-trash"></i> Delete</a>
                                                                     <% } %>
                                                                         <button type="button"
                                                                             onclick="location.href = '/dashboard/booking'"
-                                                                            class="btn btn-outline-light btn-sm" title="Back">
+                                                                            class="btn btn-outline-light btn-sm"
+                                                                            title="Back">
                                                                             <i class="fas fa-angle-left"></i> Back
-                                                                        </button><a rel="noopener" class="btn btn-default btn-sm"
-                                                                        onclick="window.print();"><i class="fas fa-print"></i>
-                                                                        Print</a>
+                                                                        </button><a rel="noopener"
+                                                                            class="btn btn-default btn-sm"
+                                                                            onclick="window.print();"><i
+                                                                                class="fas fa-print"></i>
+                                                                            Print</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -321,18 +308,20 @@
                                                 </div>
                                                 <div class="col-4 border" style="visibility:hidden">
                                                 </div>
-                                                <% if (data.Status == 7 && data.Report) { %>
+                                                <% if (data.Status==7 && data.Report) { %>
                                                     <div class="col-2 border bg-gradient-info text-light">Result</div>
                                                     <div class="col-4 border" data-status="<%= data.Status %>">
-                                                        <a href="/drive/result/<%= data.Report %>" target="_blank">View Report</a>
+                                                        <a href="/drive/result/<%= data.Report %>" target="_blank">View
+                                                            Report</a>
                                                     </div>
                                                     <div class="col-2 border bg-gradient-info text-light">
                                                         Download
                                                     </div>
                                                     <div class="col-4 border">
-                                                        <a href="/drive/result/<%= data.Report %>" download="<%= data.Report %>">Download</a>
+                                                        <a href="/drive/result/<%= data.Report %>"
+                                                            download="<%= data.Report %>">Download</a>
                                                     </div>
-                                                <% } %>
+                                                    <% } %>
                                             </div>
                                             <hr>
                                             <fieldset>
@@ -353,9 +342,12 @@
                                                     <tbody>
                                                         <tr>
                                                             <td class="py-1 px-2 text-center">1</td>
-                                                            <td class="py-1 px-2"><%=data.TestId %>
+                                                            <td class="py-1 px-2">
+                                                                <%=data.TestId %>
                                                             </td>
-                                                            <td class="py-1 px-2 text-right"><%=data.Amount%></td>
+                                                            <td class="py-1 px-2 text-right">
+                                                                <%=data.Amount%>
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

@@ -38,7 +38,7 @@
                             </li>
                            <li><a data-scroll href="/auth/logout">Logout</a></li>
                            <%}else{%>
-                              <li><a data-scroll href="/auth/login?path=signup">Get Started</a></li>
+                              <li><a data-scroll href="/auth/login?path=signup">Sign up</a></li>
                               <li><a data-scroll href="/auth/login">Login</a></li>
                         <%}%>
                      </ul>
@@ -314,20 +314,12 @@
          <div class="container">
             <div class="heading">
                <span class="icon-logo"><img src="images/icon-logo.png" alt="#"></span>
-               <% if (status) { %>
-                <h3>Goto Dashboard</h3>
-               <% } else { %>
-                  <h2>Get Started</h2>
-                <% } %>
+                <h1>Contact Us</h1>
             </div>
             <!-- end title -->
-            <div class="row">
+            <div class="row" style="display: none;">
                <div class="text-contant">
-                  <% if (status) { %>
                      <button class="btn btn-primary btn-lg" onclick="window.location.href = '/dashboard'" type="button">Goto Dashboard</button>
-                    <% } else { %>
-                     <button class="btn btn-primary btn-lg" onclick="window.location.href = '/auth/login?path=signup'" type="button">Get Started For free</button>
-                     <% } %>
                </div>
             </div>
             <!-- end row -->

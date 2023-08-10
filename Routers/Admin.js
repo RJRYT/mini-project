@@ -7,13 +7,6 @@ const Appoinment = require('../DbModel/appoinments');
 const AppStats = require('../DbModel/stats');
 const Sessions = require('../DbModel/sessions');
 
-router.use(function (req, res, next) {
-    res.appendHeader("Cache-Control", "public, max-age=300");
-    res.appendHeader("Pragma", "cache");
-    res.appendHeader("Expires", "300");
-    next();
-});
-
 router.get('/', async function (req, res) {
     if (!req.session.loggedIn)
         res.redirect('/auth/login')
@@ -21,6 +14,15 @@ router.get('/', async function (req, res) {
     else {
         let Stats = await AppStats.findOne({});
         res.render('admin/home', { name: req.session.username, user: req.session.user, dev: process.env.DEV, stats: Stats });
+    }
+});
+
+router.get('/profile', function (req, res) {
+    if (!req.session.loggedIn)
+        res.redirect('/auth/login')
+    else if (!req.session.user.Admin) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
+    else {
+        res.render('admin/profile', {name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png", dev: process.env.DEV});
     }
 });
 
@@ -123,7 +125,6 @@ router.get('/users', async function (req, res) {
             }
             const UserPic = session.user.ProfilePic?session.user.ProfilePic:"defaultpic.png";
             let data = { "name": session.username, "session": !expired, "email": session.user.Email, "id": session.user._id, "role": (session.user.Admin ? "Admin" : (session.user.Staff ? "Staff" : "Patient")), "pic": UserPic };
-            data.metadata = `ip:${session.ip || "Unknown"}, agent:${session.agent || "Unknown"}`;
             AllUsers.push(data);
         })
         Users.forEach(user => {
