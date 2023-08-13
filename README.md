@@ -53,3 +53,7 @@ Contributions are welcome! Please submit a pull request if you have any improvem
 ## License
 
 The application is licensed under the MIT License.
+
+## Stats
+
+- Total endpoints: 58
