@@ -173,44 +173,81 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Supreme Lifecare</h1>
+                            <h1 class="m-0">Contact Us</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-                                <li class="breadcrumb-item active">Supreme Lifecare</li>
+                                <li class="breadcrumb-item active">Contact</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
             </div>
             <section class="content">
-                <div class="error-page">
-                    <h2 class="headline text-warning"> 404</h2>
-
-                    <div class="error-content">
-                        <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Page not found.</h3>
-
-                        <p>
-                            We could not find the page you were looking for.
-                            Meanwhile, you may <a href="/dashboard">return to dashboard</a> or try using the search
-                            form.
-                        </p>
-
-                        <form class="search-form">
-                            <div class="input-group">
-                                <input type="text" name="search" class="form-control" placeholder="Search">
-
-                                <div class="input-group-append">
-                                    <button type="submit" name="submit" value="search" class="btn btn-warning"><i
-                                            class="fas fa-search"></i>
-                                    </button>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="Booking-MainSection" class="card card-primary">
+                                <div class="card-header no-print">
+                                    <h3 class="card-title">Contact Us</h3>
                                 </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <div class="alert alert-warning" id="result" style="display: none;"></div>
+                                    <form class="form-horizontal" action="/contact" id="contactus">
+                                        <div class="form-group row">
+                                            <label for="Name" class="col-sm-2 col-form-label">Name
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="Name" placeholder="Name *"
+                                                    title="Enter your full name" required value="<%=name%>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="Email" class="col-sm-2 col-form-label">Email
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="email" class="form-control" id="Email"
+                                                    placeholder="Email *" title="Enter your email address" required
+                                                    value="<%=user.Email%>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="Number" class="col-sm-2 col-form-label">Phone
+                                                Number
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="tel" class="form-control" id="Number"
+                                                    placeholder="Phone Number *" title="Enter a valid phone number"
+                                                    required value="<%=user.Number%>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="Message" class="col-sm-2 col-form-label">Message</label>
+                                            <div class="col-sm-10">
+                                                <textarea class="form-control" id="Message" required
+                                                    placeholder="Enter message *"
+                                                    title="Enter the message you want to send"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="offset-sm-2 col-sm-10">
+                                                <button type="submit" id="Submit" title="Submit request"
+                                                    class="btn btn-secondary">Submit <i
+                                                        class="right fas fa-angle-right"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div><!-- /.card-body -->
                             </div>
-                            <!-- /.input-group -->
-                        </form>
+                        </div>
                     </div>
-                    <!-- /.error-content -->
+                    <div class="row">
+                        <div class="col-md-12">
+
+                        </div>
+                    </div>
                 </div>
             </section>
             <a id="back-to-top" href="#" class="btn btn-secondary back-to-top" role="button" aria-label="Scroll to top">
@@ -233,6 +270,29 @@
     <script defer src="/dashboard/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script defer src="/dashboard/dist/js/adminlte.js"></script>
+    <script>
+        $('#contactus').submit(function () {
+            var action = $(this).attr('action');
+            $('#Submit').attr('disabled', 'disabled');
+            $("#result").slideUp(750, function () {
+                $('#result').hide();
+                $.post(action, {
+                    name: $('#Name').val(),
+                    email: $('#Email').val(),
+                    number: $('#Number').val(),
+                    message: $('#Message').val()
+                },
+                    function (data) {
+                        document.getElementById('result').innerHTML = data.message;
+                        $('#result').slideDown('slow');
+                        $('#Submit').removeAttr('disabled');
+                        if (data.status == 200) $('#contactus').slideUp('slow');
+                    }
+                );
+            });
+            return false;
+        });
+    </script>
 </body>
 
 </html>

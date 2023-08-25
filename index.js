@@ -86,7 +86,7 @@ app.get('/contact', function (req, res) {
 });
 app.post('/contact', async (req, res)=>{
     await Contact.create(req.body);
-    res.send({"status":200,"message":"Request recorded successfully."});
+    res.send({"status":200,"message":"Request recorded successfully. We will contact you as soon as possible"});
 })
 app.get('/about', function (req, res) {
     res.render('main/about', { status: req.session.loggedIn, user: req.session.user, dev: process.env.DEV })
