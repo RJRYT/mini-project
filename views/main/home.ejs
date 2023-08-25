@@ -6,7 +6,7 @@
 
    <body class="clinic_version">
       <!-- LOADER -->
-      <% if(!dev){ %>
+      <% if(dev){ %>
       <div id="preloader">
          <img class="preloader" src="images/loaders/heart-loading2.gif" alt="">
       </div>
@@ -46,7 +46,7 @@
                <div class="serch-bar">
                   <div id="custom-search-input">
                      <div class="input-group col-md-12">
-                        <input type="text" class="form-control input-lg" placeholder="Search" />
+                        <input type="text" id="searchSection" class="form-control input-lg" placeholder="Search" />
                         <span class="input-group-btn">
                            <button class="btn btn-info btn-lg" type="button">
                               <i class="fa fa-search" aria-hidden="true"></i>
@@ -68,7 +68,7 @@
                         <span class="center"><span class="icon"><img src="images/icon-logo.png" alt="#" /></span></span>
                         <a href="" style="color: #0071d1; text-shadow: 0.5px 0 #fff, -0.5px 0 #fff, 0 0.5px #fff, 0 -0.5px #fff,
                         0.5px 0.5px #fff, -0.5px -0.5px #fff, 0.5px -0.5px #fff, -0.5px 0.5px #fff;" class="typewrite"
-                           data-period="2000" data-type='[ "Suprime Life Care","Welcome to your advanced lab"]'>
+                           data-period="2000" data-type='["Suprime Life Care","Welcome to your advanced lab"]'>
                            <span class="wrap"></span>
                         </a>
                      </h2>

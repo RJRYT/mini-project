@@ -40,7 +40,7 @@
                     <div class="serch-bar">
                         <div id="custom-search-input">
                             <div class="input-group col-md-12">
-                                <input type="text" class="form-control input-lg" placeholder="Search" />
+                                <input type="text" id="searchSection" class="form-control input-lg" placeholder="Search" />
                                 <span class="input-group-btn">
                                     <button class="btn btn-info btn-lg" type="button">
                                         <i class="fa fa-search" aria-hidden="true"></i>
@@ -59,25 +59,25 @@
                     <div class="contact-image">
                         <img src="images/icon-logo.png" alt="contact" />
                     </div>
-                    <form method="post" class="ContactForm">
+                    <form method="post" class="ContactForm" id="ContactForm">
                         <h3>Drop Us a Message</h3>
                         <div class="col">
                             <div class="form-group">
                                 <input type="text" name="txtName" class="form-control" placeholder="Your Name *"
-                                    value="" maxlength="12" title="Enter your username" required />
+                                    value="" maxlength="12" title="Enter your username" required autocomplete="name" />
                             </div>
                             <div class="form-group">
                                 <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *"
-                                    value="" pattern="[^@\s]+@[^@\s]+" title="Enter a valid email address" required />
+                                    value="" pattern="[^@\s]+@[^@\s]+" title="Enter a valid email address" required autocomplete="email" />
                             </div>
                             <div class="form-group">
                                 <input type="text" name="txtPhone" class="form-control"
                                     placeholder="Your Phone Number *" value="" pattern="[7-9]{1}[0-9]{9}"
-                                    title="Enter the 10 digit phone number" required />
+                                    title="Enter the 10 digit phone number" required autocomplete="tel-local" />
                             </div>
                             <div class="form-group">
                                 <textarea name="txtMsg" class="form-control" placeholder="Your Message *"
-                                    style="width: 100%; height: 150px;" maxlength="500" required></textarea>
+                                    style="width: 100%; height: 150px;" maxlength="500" autocomplete="message" required></textarea>
                             </div>
                             <div class="form-group">
                                 <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
