@@ -16,6 +16,7 @@ const Test = require('./DbModel/tests');
 const Report = require('./DbModel/results');
 const Appoinment = require('./DbModel/appoinments');
 const UserDB = require('./DbModel/user');
+const Contact = require('./DbModel/contactreq');
 require('dotenv').config();
 
 /**
@@ -83,6 +84,10 @@ app.get('/', function (req, res) {
 app.get('/contact', function (req, res) {
     res.render('main/contact', { status: req.session.loggedIn, user: req.session.user, dev: process.env.DEV })
 });
+app.post('/contact', async (req, res)=>{
+    await Contact.create(req.body);
+    res.send({"status":200,"message":"Request recorded successfully."});
+})
 app.get('/about', function (req, res) {
     res.render('main/about', { status: req.session.loggedIn, user: req.session.user, dev: process.env.DEV })
 });
