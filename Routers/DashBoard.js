@@ -14,6 +14,16 @@ router.get('/', function (req, res) {
     }
 });
 
+router.get('/contact', function (req, res) {
+    if (!req.session.loggedIn)
+        res.redirect('/auth/login')
+        else if (req.session.user.Admin) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
+    else if (req.session.user.Staff) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
+    else {
+        res.render('userdashboard/contact', {name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png", dev: process.env.DEV});
+    }
+});
+
 router.get('/profile', function (req, res) {
     if (!req.session.loggedIn)
         res.redirect('/auth/login')
