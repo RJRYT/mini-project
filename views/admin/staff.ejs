@@ -187,14 +187,14 @@
                                                     </td>
                                                     <td>
                                                         <span>
-                                                            <%=user.name%>
+                                                            <%=user.FirstName%>
                                                         </span>
                                                     </td>
                                                     <td>
-                                                        <%= user.email %>
+                                                        <%= user.Email %>
                                                     </td>
                                                     <td>
-                                                        <%= user.createdAt.slice('T')[0] %>
+                                                        <%= user.createdAt.toString().split('GMT')[0] %>
                                                     </td>
                                                     <td>
                                                         <button class="btn btn-primary btn-sm" data-id="<%= user.id %>">
