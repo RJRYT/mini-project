@@ -4,6 +4,7 @@ const Schema = new mongo.Schema({
     name: String,
     email: String,
     number: Number,
+    subject: String,
     message: String
 },{timestamps: true});
 

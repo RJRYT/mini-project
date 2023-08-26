@@ -36,6 +36,7 @@
                 name: $('#name').val(),
                 email: $('#email').val(),
                 number: $('#number').val(),
+                subject: $('#subject').val(),
                 message: $('#message').val()
             },
                 function (data) {

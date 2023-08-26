@@ -224,6 +224,15 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
+                                            <label for="Subject" class="col-sm-2 col-form-label">Subject
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="Subject"
+                                                    placeholder="Subject *" title="Enter a subject"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <label for="Message" class="col-sm-2 col-form-label">Message</label>
                                             <div class="col-sm-10">
                                                 <textarea class="form-control" id="Message" required
@@ -280,6 +289,7 @@
                     name: $('#Name').val(),
                     email: $('#Email').val(),
                     number: $('#Number').val(),
+                    subject: $('#Subject').val(),
                     message: $('#Message').val()
                 },
                     function (data) {

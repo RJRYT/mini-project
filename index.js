@@ -85,7 +85,12 @@ app.get('/contact', function (req, res) {
     res.render('main/contact', { status: req.session.loggedIn, user: req.session.user, dev: process.env.DEV })
 });
 app.post('/contact', async (req, res)=>{
-    await Contact.create(req.body);
+    const body = req.body;
+    if(!body.name) return res.send({"status":403, "message":"Please provide your name"});
+    if(!body.email) return res.send({"status":403, "message":"Please provide your email address"});
+    if(!body.number) return res.send({"status":403, "message":"Please provide your phone number"});
+    if(!body.message) return res.send({"status":403, "message":"Please provide a your message request"});
+    await Contact.create(body);
     res.send({"status":200,"message":"Request recorded successfully. We will contact you as soon as possible"});
 })
 app.get('/about', function (req, res) {
