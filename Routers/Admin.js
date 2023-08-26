@@ -6,6 +6,7 @@ const Test = require('../DbModel/tests');
 const Appoinment = require('../DbModel/appoinments');
 const AppStats = require('../DbModel/stats');
 const Sessions = require('../DbModel/sessions');
+const Contact = require('../DbModel/contactreq');
 
 router.get('/', async function (req, res) {
     if (!req.session.loggedIn)
@@ -146,7 +147,16 @@ router.get('/staffs', async function (req, res) {
         res.render('admin/staff', { name: req.session.username, user: req.session.user, dev: process.env.DEV, data: Users });
     }
 });
-
+router.get('/contactreq', async function (req, res) {
+    if (!req.session.loggedIn)
+        res.redirect('/auth/login');
+    else if (!req.session.user.Admin) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
+    else {
+        const Reqs = await Contact.find({});
+        console.log(Reqs);        
+        res.render('admin/requests', { name: req.session.username, user: req.session.user, dev: process.env.DEV, data: Reqs });
+    }
+})
 const TimeData = {
     "morning": {
         "Time": [
