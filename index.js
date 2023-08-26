@@ -100,12 +100,14 @@ app.get('/login', function (req, res) {
     res.redirect('/auth/login');
 });
 app.get('/panel', function (req, res) {
-    if(req.session.user.Admin) res.redirect('/admin');
+    if (!req.session.loggedIn) res.redirect('/');
+    else if(req.session.user.Admin) res.redirect('/admin');
     else if(req.session.user.Staff) res.redirect('/office');
     else res.redirect('/dashboard');
 });
 app.get('/panel/profile', function (req, res) {
-    if(req.session.user.Admin) res.redirect('/admin/profile');
+    if (!req.session.loggedIn) res.redirect('/');
+    else if(req.session.user.Admin) res.redirect('/admin/profile');
     else if(req.session.user.Staff) res.redirect('/office/profile');
     else res.redirect('/dashboard/profile');
 });

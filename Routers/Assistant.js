@@ -6,82 +6,64 @@ const Test = require('../DbModel/tests');
 const Appoinment = require('../DbModel/appoinments');
 const UserDB = require('../DbModel/user');
 
-router.get('/', async function (req, res) {
+router.use(function (req, res, next) {
     if (!req.session.loggedIn)
         res.redirect('/auth/login')
-    else if (!req.session.user.Staff) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
-    else {
-        let Stats = await AppStats.findOne({});
-        res.render('assistant/home', { name: req.session.username, user: req.session.user, dev: process.env.DEV, stats: Stats });
-    }
+    else if (!req.session.user.Staff) res.status(403).sendFile(path.join(__dirname, '../Static/403.html'));
+    else next();
+});
+
+router.get('/', async function (req, res) {
+    let Stats = await AppStats.findOne({});
+    res.render('assistant/home', { name: req.session.username, user: req.session.user, dev: process.env.DEV, stats: Stats });
 });
 
 router.get('/profile', function (req, res) {
-    if (!req.session.loggedIn)
-        res.redirect('/auth/login')
-    else if (!req.session.user.Staff) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
-    else {
-        res.render('assistant/profile', {name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png", dev: process.env.DEV});
-    }
+    res.render('assistant/profile', { name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png", dev: process.env.DEV });
 });
 
 router.get('/results', async function (req, res) {
-    if (!req.session.loggedIn)
-        res.redirect('/auth/login')
-    else if (!req.session.user.Staff) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
-    else {
-        let id = null;
-        if (req.query && req.query.id) {
-            id = req.query.id;
-        }
-        res.render('assistant/results', { name: req.session.username, user: req.session.user, dev: process.env.DEV, id: id });
+    let id = null;
+    if (req.query && req.query.id) {
+        id = req.query.id;
     }
+    res.render('assistant/results', { name: req.session.username, user: req.session.user, dev: process.env.DEV, id: id });
 });
 
 router.get('/appoinments', async function (req, res) {
-    if (!req.session.loggedIn)
-        res.redirect('/auth/login')
-    else if (!req.session.user.Staff) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
-    else {
-        let BookingData = [];
-        BookingData = await Appoinment.find({});
-        const DateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        for (let item = 0; item < BookingData.length; item++) {
-            if(BookingData[item].Status == 1){
-                BookingData.splice(item, 1);
-                continue;
-            }
-            if(BookingData[item].Status == 3){
-                BookingData.splice(item, 1);
-                continue;
-            }
-            BookingData[item].Time = BookingData[item].Date.toLocaleDateString('en-US', DateOptions) + " " + TimeData[BookingData[item].Time].Time.find(i => i.ID == BookingData[item].Hour).Name;
-            BookingData[item].Hour = BookingData[item].createdAt.toLocaleDateString('en-US', DateOptions);
-            BookingData[item].User = {};
-            const temp = await UserDB.findOne({ "_id": BookingData[item].UserId });
-            BookingData[item].User = temp;
+    let BookingData = [];
+    BookingData = await Appoinment.find({});
+    const DateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    for (let item = 0; item < BookingData.length; item++) {
+        if (BookingData[item].Status == 1) {
+            BookingData.splice(item, 1);
+            continue;
         }
-        BookingData.sort((a, b) => (a.Status > b.Status) ? 1 : (a.Status < b.Status) ? -1 : 0);
-        res.render('assistant/appoinments', { name: req.session.username, user: req.session.user, dev: process.env.DEV, data: BookingData });
+        if (BookingData[item].Status == 3) {
+            BookingData.splice(item, 1);
+            continue;
+        }
+        BookingData[item].Time = BookingData[item].Date.toLocaleDateString('en-US', DateOptions) + " " + TimeData[BookingData[item].Time].Time.find(i => i.ID == BookingData[item].Hour).Name;
+        BookingData[item].Hour = BookingData[item].createdAt.toLocaleDateString('en-US', DateOptions);
+        BookingData[item].User = {};
+        const temp = await UserDB.findOne({ "_id": BookingData[item].UserId });
+        BookingData[item].User = temp;
     }
+    BookingData.sort((a, b) => (a.Status > b.Status) ? 1 : (a.Status < b.Status) ? -1 : 0);
+    res.render('assistant/appoinments', { name: req.session.username, user: req.session.user, dev: process.env.DEV, data: BookingData });
 });
 router.get('/appoinments/:id', async function (req, res) {
-    if (!req.session.loggedIn)
-        res.redirect('/auth/login')
-    else if (!req.session.user.Staff) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
-    else {
-        if (!req.params) return res.render('assistant/404', { name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png" });
-        if (!req.params.id) return res.render('assistant/404', { name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png" });
-        var BookingData = await Appoinment.findOne({ "ID": req.params.id });
-        if (!BookingData) return res.render('assistant/404', { name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png" });
-        const DateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        BookingData.Time = BookingData.Date.toLocaleDateString('en-US', DateOptions) + " " + TimeData[BookingData.Time].Time.find(i => i.ID == BookingData.Hour).Name;
-        BookingData.Hour = BookingData.createdAt.toLocaleDateString('en-US', DateOptions);
-        const TestList = await Test.findOne({ "ID": BookingData.TestId });
-        BookingData.TestId = TestList.Name;
-        const Patient = await UserDB.findOne({ "_id": BookingData.UserId });
-        res.render('assistant/appoinmentinfo', { name: req.session.username, user: req.session.user, dev: process.env.DEV, data: BookingData, patient: Patient });
-    }
+    if (!req.params) return res.render('assistant/404', { name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png" });
+    if (!req.params.id) return res.render('assistant/404', { name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png" });
+    var BookingData = await Appoinment.findOne({ "ID": req.params.id });
+    if (!BookingData) return res.render('assistant/404', { name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png" });
+    const DateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    BookingData.Time = BookingData.Date.toLocaleDateString('en-US', DateOptions) + " " + TimeData[BookingData.Time].Time.find(i => i.ID == BookingData.Hour).Name;
+    BookingData.Hour = BookingData.createdAt.toLocaleDateString('en-US', DateOptions);
+    const TestList = await Test.findOne({ "ID": BookingData.TestId });
+    BookingData.TestId = TestList.Name;
+    const Patient = await UserDB.findOne({ "_id": BookingData.UserId });
+    res.render('assistant/appoinmentinfo', { name: req.session.username, user: req.session.user, dev: process.env.DEV, data: BookingData, patient: Patient });
 });
 
 const TimeData = {
@@ -139,7 +121,8 @@ router.use(async function (err, req, res, next) {
     console.log("[ERROR]: Error on path:", req._parsedUrl.pathname);
     console.log('[ERROR]: Error from lab assistant module');
     console.log(err, err.stack);
-    return res.status(500).render('assistant/500', { name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png" });
+    if (!req.session.user.Staff) res.status(500).sendFile(path.join(__dirname, '../Static/500.html'));
+    else res.status(500).render('assistant/500', { name: req.session.username, user: req.session.user, image: req.session.user.ProfilePic || "defaultpic.png" });
 });
 
 module.exports = router;
