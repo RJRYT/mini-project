@@ -152,8 +152,7 @@ router.get('/contactreq', async function (req, res) {
         res.redirect('/auth/login');
     else if (!req.session.user.Admin) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
     else {
-        const Reqs = await Contact.find({});
-        console.log(Reqs);        
+        const Reqs = await Contact.find({});     
         res.render('admin/requests', { name: req.session.username, user: req.session.user, dev: process.env.DEV, data: Reqs });
     }
 })

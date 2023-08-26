@@ -48,7 +48,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
-app.use(session({ secret: 'dkvsunsfidnsvjdnsfdukwebku', name: 'uniqueSessionID', saveUninitialized: false, cookie: { maxAge: oneDay }, resave: false, store: MongoStore.create({mongoUrl: process.env.MONGO}) }));
+app.use(session({ secret: 'dkvsunsfidnsvjdnsfdukwebku', name: 'UserSession', saveUninitialized: false, cookie: { maxAge: oneDay }, resave: false, store: MongoStore.create({mongoUrl: process.env.MONGO}) }));
 
 /**
  * Mongoose events (optional)
