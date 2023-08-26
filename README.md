@@ -56,4 +56,5 @@ The application is licensed under the MIT License.
 
 ## Stats
 
-- Total endpoints: 58
+- Total endpoints: 62
+- Total files: 178
