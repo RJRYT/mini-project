@@ -100,7 +100,6 @@ router.get('/appoinments/:id', async function (req, res) {
         res.render('admin/appoinmentinfo', { name: req.session.username, user: req.session.user, dev: process.env.DEV, data: BookingData, patient: Patient });
     }
 });
-
 router.get('/users', async function (req, res) {
     if (!req.session.loggedIn)
         res.redirect('/auth/login')
@@ -136,6 +135,15 @@ router.get('/users', async function (req, res) {
             }
         })
         res.render('admin/user', { name: req.session.username, user: req.session.user, dev: process.env.DEV, data: AllUsers });
+    }
+});
+router.get('/staffs', async function (req, res) {
+    if (!req.session.loggedIn)
+        res.redirect('/auth/login');
+    else if (!req.session.user.Admin) res.status(403).json({ "status": 403, "message": "You are not authosrised" })
+    else {
+        const Users = await UserDB.find({"Staff":true});
+        res.render('admin/staff', { name: req.session.username, user: req.session.user, dev: process.env.DEV, data: Users });
     }
 });
 
