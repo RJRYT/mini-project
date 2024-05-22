@@ -20,7 +20,7 @@
     "ejs-mate": "^4.0.0",
     "express": "^4.19.2",
     "express-fileupload": "^1.5.0",
-    "express-session": "^1.17.3",
+    "express-session": "^1.18.0",
     "mongoose": "^6.1.8",
     "password-hash": "^1.2.2",
     "useragent": "^2.3.0"
