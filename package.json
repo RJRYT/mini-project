@@ -21,7 +21,7 @@
     "express": "^4.19.2",
     "express-fileupload": "^1.5.1",
     "express-session": "^1.18.0",
-    "mongoose": "^8.5.3",
+    "mongoose": "^8.6.3",
     "password-hash": "^1.2.2",
     "useragent": "^2.3.0"
   },
